@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const { promisify } = require("util")
 
 var pool = mysql.createPool({
     connectionLimit: 100,
@@ -8,4 +9,5 @@ var pool = mysql.createPool({
     database: 'u173148296_bd_orquiweb',
 });
 
+pool.query = promisify(pool.query)
 module.exports = pool;

@@ -20,6 +20,5 @@ app.get('/' , (req, res) => {
 app.listen(app.get('port') , async () => {
     console.log(__dirname);
     console.log( `Sever on port ${app.get('port')}` );
-    let y = await x.getUsers
-    console.log(y)
+    console.log(await x.getUsers())
 })
