@@ -3,7 +3,6 @@ const bd = require('../database/connectMySQL');
 
 class UserServices {
     constructor() {
-
     }
 
     find(callback) {
@@ -16,6 +15,10 @@ class UserServices {
                 callback(result);
             })
         });
+    }
+
+    findOne(callback, username){
+        
     }
 }
 
