@@ -4,8 +4,9 @@ const router = express.Router();
 const service = new userServices();
 
 router.get('/', (req, res) => {
-    const users = service.find();
-    res.json(users);
+    service.find((result) =>{
+        res.json(result);
+    });    
 });
 
 module.exports = router;

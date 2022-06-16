@@ -6,15 +6,14 @@ class UserServices {
 
     }
 
-    find() {
+    find(callback) {
         let readQuery = 'SELECT * FROM usuario';
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(readQuery, function (err, result) {
                 if (err) throw err;
                 connection.release();
-                console.log(result);
-                return result;
+                callback(result);
             })
         });
     }
