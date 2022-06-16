@@ -1,11 +1,16 @@
 const connection = require('../database/connectMySQL.js');
 
-const getUsers =  async () => {
-    const users = await connection.query('select * from usuario')
-    let names = users.map(user => user.nombre)
-    return names
+const getUsers =  () => {
+    const users = connection.query('select * from usuario', (err, res) => {
+        if(err){
+            throw err
+        }
+        let names = res.map( user => user.nombre )
+        return names
+    })
+    return users
 }
 userServices = {
-    getUsers,
+    getUsers
 }
 module.exports = userServices
