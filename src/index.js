@@ -10,18 +10,8 @@ app.set('views', path.join(__dirname , 'views'));
 app.use(express.static(path.join(__dirname, 'public')))
 
 //example query database
-// const con = require('./modulos/database/connectMySQL.js');
 const x = require('./modulos/usuarios/controller.js')
 
-
-// con.query('select * from usuario' , (err, res, fields)=> {
-//     if(err){
-//         throw err
-//     }
-//     res.forEach(element => {
-//         console.log(element.nombre);
-//     });
-// })
 
 app.get('/' , (req, res) => {
     res.render('index')
@@ -30,6 +20,6 @@ app.get('/' , (req, res) => {
 app.listen(app.get('port') , async () => {
     console.log(__dirname);
     console.log( `Sever on port ${app.get('port')}` );
-    let y = x.getUsers
+    let y = await x.getUsers
     console.log(y)
 })

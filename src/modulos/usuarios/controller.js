@@ -5,6 +5,7 @@ const userController = {
         let namesUser = await services.getUsers
         return namesUser
     },
+    
     getUser : (req, res) => {
         
     }   
