@@ -16,7 +16,6 @@ router.post("/", (req, res) => {
   if (username && password) {
     service.findOne(
       (user) => {
-        console.log(user);
         if (user) {
           switch (user.rol) {
             case "administrador":
