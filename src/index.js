@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const routerApi = require('./modulos/routes');
 const app = express();
+const session = require('express-session');
 const port = 3000;
 
 //settings
@@ -12,7 +13,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-
+app.use(session({
+	secret: 'secret',
+	resave: true,
+	saveUninitialized: true
+}));
 
 routerApi(app);
 

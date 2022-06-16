@@ -17,10 +17,20 @@ class UserServices {
         });
     }
 
-    findOne(callback, username){
-        
+    findOne(callback, username, password){
+        let readQuery = 'SELECT * FROM usuario WHERE username = ? AND password = ?';
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(readQuery, [username , password] ,  (err, result) => {
+                if (err) throw err;
+                if(result.length > 0) {
+                    console.log('ok encontrado');
+                    connection.release();
+                    callback();
+                }
+            })
+        });
     }
 }
-
 
 module.exports = UserServices;
