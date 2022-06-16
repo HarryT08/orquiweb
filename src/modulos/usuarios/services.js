@@ -10,10 +10,7 @@ const getUsers =  () => {
     })
     return users
 }
-
-
 userServices = {
     getUsers
 }
-
 module.exports = userServices
