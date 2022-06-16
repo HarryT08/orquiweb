@@ -1,35 +1,25 @@
 const express = require('express');
 const path = require('path');
-const app = express()
-const mysql = require('mysql');
+const routerApi = require('./modulos/routes');
+const app = express();
+const port = 3000;
 
 //settings
-app.set('port', process.env.PORT || 3000)
+app.set('port', port);
 app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname , 'views'));
-app.use(express.static(path.join(__dirname, 'public')))
+app.set('views', path.join(__dirname, 'views'));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 
 //example query database
 // const con = require('./modulos/database/connectMySQL.js');
-const x = require('./modulos/usuarios/controller.js')
 
+routerApi(app);
 
-// con.query('select * from usuario' , (err, res, fields)=> {
-//     if(err){
-//         throw err
-//     }
-//     res.forEach(element => {
-//         console.log(element.nombre);
-//     });
-// })
-
-app.get('/' , (req, res) => {
-    res.render('index')
+app.get('/', (req, res) => {
+    res.render('index');
 });
 
-app.listen(app.get('port') , async () => {
-    console.log(__dirname);
-    console.log( `Sever on port ${app.get('port')}` );
-    let y = x.getUsers
-    console.log(y)
-})
+app.listen(port, () => {
+    console.log('Probando server ' + port);
+});

@@ -1,11 +1,10 @@
 const mysql = require('mysql');
 
-var pool = mysql.createPool({
-    connectionLimit: 100,
+var conexion = mysql.createPool({
     host: 'sql565.main-hosting.eu',
-    user: 'u173148296_root',
-    password: 'Root1506',
     database: 'u173148296_bd_orquiweb',
+    user: 'u173148296_root',
+    password: 'Root1506'
 });
 
-module.exports = pool;
+module.exports = conexion;

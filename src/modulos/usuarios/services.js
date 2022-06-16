@@ -1,9 +1,7 @@
 const connection = require('../database/connectMySQL.js');
 
-
-
-const getUsers =  async () => {
-    const users = await connection.query('select * from usuario', (err, res, x) => {
+const getUsers =  () => {
+    const users = connection.query('select * from usuario', (err, res) => {
         if(err){
             throw err
         }
@@ -15,7 +13,7 @@ const getUsers =  async () => {
 
 
 userServices = {
-    getUsers,
+    getUsers
 }
 
 module.exports = userServices
