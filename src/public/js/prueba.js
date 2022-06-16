@@ -28,8 +28,7 @@ function cambiarEstado() {
 //document.addEventListener("DOMContentLoaded", loadData());
 
 
-function go() {
-  const user = document.getElementById('password') 
+function go(){
   const pass = document.getElementById('password')
-  console.log(pass);
+  // console.log(pass.value + "");
 }

@@ -7,44 +7,29 @@ const mysql = require('mysql');
 app.set('port', process.env.PORT || 3000)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname , 'views'));
-
-//Cochinada
-var pool = mysql.createPool({
-    connectionLimit: 100,
-    host: 'sql565.main-hosting.eu',
-    user: 'u173148296_root',
-    password: 'Root1506',
-    port: '3306',
-    database: 'u173148296_bd_orquiweb',
-    debug: false
-});
-
-pool.getConnection(function(err, connection) {
-
-    // do whatever you want with your connection here
-
-    connection.release();
-
-});
-
-//Middlewares
-// app.use(myConnection(mysql,{
-//     host: 'sql565.main-hosting.eu',
-//     user: 'u173148296_root',
-//     password: 'Root1506',
-//     port: '3306',
-//     database: 'u173148296_bd_orquiweb'
-// }, 'single'));
-
-//Archivos fijos
 app.use(express.static(path.join(__dirname, 'public')))
 
-//Routing
+//example query database
+// const con = require('./modulos/database/connectMySQL.js');
+const x = require('./modulos/usuarios/controller.js')
+
+
+// con.query('select * from usuario' , (err, res, fields)=> {
+//     if(err){
+//         throw err
+//     }
+//     res.forEach(element => {
+//         console.log(element.nombre);
+//     });
+// })
+
 app.get('/' , (req, res) => {
     res.render('index')
 });
 
-app.listen(app.get('port') , () => {
+app.listen(app.get('port') , async () => {
     console.log(__dirname);
     console.log( `Sever on port ${app.get('port')}` );
+    let y = x.getUsers
+    console.log(y)
 })
