@@ -3,6 +3,7 @@ const bd = require('../database/connectMySQL');
 
 class UserServices {
     constructor() {
+
     }
 
     find(callback) {
@@ -18,19 +19,18 @@ class UserServices {
     }
 
     findOne(callback, username, password){
+        console.log(username , " " , password);
         let readQuery = 'SELECT * FROM usuario WHERE username = ? AND password = ?';
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(readQuery, [username , password] ,  (err, result) => {
                 if (err) throw err;
-                if(result.length > 0) {
-                    console.log('ok encontrado');
-                    connection.release();
-                    callback();
-                }
+                callback(result[0])
+                connection.release()
             })
         });
     }
+
 }
 
 module.exports = UserServices;

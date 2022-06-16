@@ -13,16 +13,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
-app.use(session({
-	secret: 'secret',
-	resave: true,
-	saveUninitialized: true
-}));
+// app.use(session({
+// 	secret: 'secret',
+// 	resave: true,
+// 	saveUninitialized: true
+// }));
 
 routerApi(app);
 
 app.get('/', (req, res) => {
-    res.render('index');
+    res.render('login');
 });
 
 app.listen(port, () => {
