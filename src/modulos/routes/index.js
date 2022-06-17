@@ -5,10 +5,9 @@ const adminRouter = require('./adminRouter');
 function routerApi(app){
     //add new route for versions
     const router = express.Router();
-    
-    app.use('/api', router);
+    app.use('/', router);
     //use route father
-    router.use('/users', usersRouter);
+    router.use('/home', usersRouter);
     router.use('/admin', adminRouter);
 }
 

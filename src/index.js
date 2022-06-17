@@ -20,7 +20,6 @@ app.use(express.urlencoded({extended:false}));
 // }));
 
 routerApi(app);
-
 app.get('/', (req, res) => {
     res.render('login');
 });
