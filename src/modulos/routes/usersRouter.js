@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
           res.render(page_render, { user });
         } else {
           //Caso de no encontrar credenciales en la BD
-          res.render(page_render, {
+          res.render('page_render', {
             msg: "USUARIO Y/O CONTRASEÑA INCORRECTAS",
           });
         }
