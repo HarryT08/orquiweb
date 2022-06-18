@@ -7,7 +7,7 @@ const adminServices = new AdminServices()
 router.get('/user', (req, res) => {
     adminServices.getUsers((users) => {
         console.log(users);
-        res.render('usuarios', {users});        
+        res.json(users);
     })
 });
 

@@ -11,6 +11,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+  console.log(req.body);
   const { username } = req.body;
   const { password } = req.body;
   let page_render = "login";
@@ -29,10 +30,11 @@ router.post("/", (req, res) => {
               page_render = "home_pase";
               break;
           }
-          res.render(page_render, { user });
+          console.log('Inicio correcto');
+          res.status(200).json('correcto');
         } else {
           //Caso de no encontrar credenciales en la BD
-          res.render('page_render', {
+          res.status(404).json({
             msg: "USUARIO Y/O CONTRASEÑA INCORRECTAS",
           });
         }

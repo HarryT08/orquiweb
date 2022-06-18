@@ -4,6 +4,7 @@ const routerApi = require('./modulos/routes');
 const app = express();
 const session = require('express-session');
 const port = 3000;
+const cors = require('cors');
 
 //settings
 app.set('port', port);
@@ -18,7 +19,7 @@ app.use(express.urlencoded({extended:false}));
 // 	resave: true,
 // 	saveUninitialized: true
 // }));
-
+app.use(cors());
 routerApi(app);
 app.get('/', (req, res) => {
     res.render('login');
