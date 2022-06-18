@@ -41,12 +41,14 @@ $('#form-login').on('submit', function(e){
         body: JSON.stringify(data),
         headers: {
             'Content-Type': 'application/json'
-          }
+        }
     }).then(function(response){
         if(response.ok){
             window.location.href = 'index.html';
         }else{
-            document.getElementById('error').innerHTML = "Usuario o contraseña incorrecto";
+            response.json().then(function(result){
+                document.getElementById('error').innerHTML = result.msg;
+            });            
         }
     })
 });
