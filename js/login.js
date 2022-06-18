@@ -44,7 +44,11 @@ $('#form-login').on('submit', function(e){
         }
     }).then(function(response){
         if(response.ok){
-            window.location.href = 'index.html';
+            response.json().then(function(result){
+                if(result === 'admin'){
+                    window.location.href = 'google.com';
+                }
+            }); 
         }else{
             response.json().then(function(result){
                 document.getElementById('error').innerHTML = result.msg;
