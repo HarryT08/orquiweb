@@ -12,8 +12,8 @@ class UserServices {
             if (err) throw err;
             connection.query(readQuery, function (err, result) {
                 if (err) throw err;
-                connection.release();
                 callback(result);
+                connection.release();
             })
         });
     }

@@ -1,10 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const userServices = require("./../services/adminServices");
+const AdminServices = require("./../services/adminServices");
+const adminServices = new AdminServices()
 
 //Rutas para las vistas del administrador
 router.get('/user', (req, res) => {
-    res.render('usuarios');
+    adminServices.getUsers((users) => {
+        console.log(users);
+        res.render('usuarios', {users});        
+    })
 });
 
 router.get('/mesa', (req, res) => {

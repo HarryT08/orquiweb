@@ -5,6 +5,7 @@ const service = new userServices();
 
 router.get("/", (req, res) => {
   service.find((result) => {
+    console.log(result);
     res.json(result);
   });
 });
