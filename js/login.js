@@ -1,6 +1,5 @@
 const API_URL = "http://localhost:3000";
 
-<<<<<<< HEAD
 // const xhr = new XMLHttpRequest();
 
 // function onRequestHandler(){
@@ -28,8 +27,6 @@ const API_URL = "http://localhost:3000";
 //         }
 //     });
 // }
-=======
->>>>>>> 1431334d39a6913a72b5799a23f0a2ef36dac738
 
 $('#form-login').on('submit', function(e){
     //Prevenimos envio de formulario
@@ -48,20 +45,9 @@ $('#form-login').on('submit', function(e){
         }
     }).then(function(response){
         if(response.ok){
-<<<<<<< HEAD
             response.json().then(function(result){
                 if(result === 'admin'){
                     window.location.href = './views/home_admin.html';
-=======
-            response.json().then( (result) => {
-                if(result !== 'notFound'){
-                    window.location.href = `./views/home_${result}.html`
-                }
-                else {
-                    response.json().then(function(result){
-                        document.getElementById('error').innerHTML = result.msg;
-                    }); 
->>>>>>> 1431334d39a6913a72b5799a23f0a2ef36dac738
                 }
             }); 
         }else{
