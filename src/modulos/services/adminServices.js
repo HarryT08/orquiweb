@@ -2,10 +2,10 @@ const mysql = require('mysql');
 const bd = require('../database/connectMySQL');
 
 class AdminServices {
+
     constructor() {
 
     }
-
 
     getUsers(callback){
         let readQuery = 'SELECT * FROM usuario';
@@ -26,6 +26,7 @@ class AdminServices {
     deleteUser(callback){
 
     }
+    
 }
 
 module.exports = AdminServices;

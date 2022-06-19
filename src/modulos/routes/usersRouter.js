@@ -14,24 +14,14 @@ router.post("/", (req, res) => {
   console.log(req.body);
   const { username } = req.body;
   const { password } = req.body;
-  let page_render = "login";
+  let page_render = "notFound";
   if (username && password) {
     service.findOne(
       (user) => {
         if (user) {
-          switch (user.rol) {
-            case "administrador":
-              page_render = "home_admin";
-              break;
-            case "mesero":
-              page_render = "home_mesero";
-              break;
-            case "pase":
-              page_render = "home_pase";
-              break;
-          }
-          console.log('Inicio correcto');
-          res.status(200).json('correcto');
+          page_render = user.rol
+          console.log(page_render);
+          res.status(200).json(page_render);
         } else {
           //Caso de no encontrar credenciales en la BD
           res.status(404).json({
@@ -43,7 +33,6 @@ router.post("/", (req, res) => {
       password
     );
   } else {
-    // Caso de redireccion al login
     res.render(page_render, { msg: "USUARIO Y/O CONTRASEÑA INCORRECTAS" });
   }
 });
