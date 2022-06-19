@@ -1,35 +1,9 @@
 const API_URL = "http://localhost:3000";
 
-// const xhr = new XMLHttpRequest();
-
-// function onRequestHandler(){
-//     if (this.readyState === 4 && this.status === 200){
-//         const data = JSON.parse(this.response);
-//         const htmlresponse = document.querySelector('#app');
-//         const template = data.map(user => `<li>${user.username}</li>`);
-//         htmlresponse.innerHTML = `<ul>${template}</ul>`;
-//     }
-// }
-
-// xhr.addEventListener("load", onRequestHandler);
-// xhr.open('GET', 'http://localhost:3000/admin/user');
-// xhr.send();
-// function request() {
-//     $.ajax({
-//         type: 'GET',
-//         url: 'http://localhost:3000/admin/user',
-//         async: true,
-//         cache: false,
-//         success: function (data) {
-//             console.log(data);
-//         }
-//     });
-// }
 
 $('#form-login').on('submit', function(e){
     //Prevenimos envio de formulario
     e.preventDefault();
-
     //Obtenemos los valores del formulario
     var data = {
         username: document.getElementById('username').value,
@@ -44,9 +18,14 @@ $('#form-login').on('submit', function(e){
         }
     }).then(function(response){
         if(response.ok){
-            response.json().then(function(result){
-                if(result === 'admin'){
-                    window.location.href = 'google.com';
+            response.json().then( (result) => {
+                if(result !== 'notFound'){
+                    window.location.href = `./views/home_${result}.html`
+                }
+                else {
+                    response.json().then(function(result){
+                        document.getElementById('error').innerHTML = result.msg;
+                    }); 
                 }
             }); 
         }else{

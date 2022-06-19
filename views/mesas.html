@@ -12,8 +12,8 @@
     <!-- Page Title  -->
     <title>Default Dashboard | DashLite Admin Template</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="/assets/css/dashlite.css?ver=2.2.0">
-    <link id="skin-default" rel="stylesheet" href="/assets/css/theme.css?ver=2.2.0">
+    <link rel="stylesheet" href="./assets/css/dashlite.css?ver=2.2.0">
+    <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=2.2.0">
 </head>
 
 
@@ -25,9 +25,9 @@
             <div class="nk-sidebar nk-sidebar-fixed is-light " data-content="sidebarMenu">
                 <div class="nk-sidebar-element nk-sidebar-head">
                     <div class="nk-sidebar-brand">
-                        <img class="logo-light logo-img" src="/images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                        <img class="logo-dark logo-img" src="/images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
-                        <img class="logo-small logo-img logo-img-small" src="/images/logo-small.png" srcset="./images/logo-small2x.png 2x" alt="logo-small">
+                        <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
+                        <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x" alt="logo-dark">
+                        <img class="logo-small logo-img logo-img-small" src="./images/logo-small.png" srcset="./images/logo-small2x.png 2x" alt="logo-small">
                     </div>
                     <div class="nk-menu-trigger mr-n2">
                         <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em class="icon ni ni-arrow-left"></em></a>
@@ -42,17 +42,17 @@
                                 <li class="nk-menu-item has-sub">
                                     <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-users-fill"></em></span>
-                                        <span class="nk-menu-text">Administrar</span>
+                                        <span class="nk-menu-text">Adminidsdstrar</span>
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="/admin/user" class="nk-menu-link"><span class="nk-menu-text">Administrar Usuarios</span></a>
+                                            <a href="./views/usuarios.html" class="nk-menu-link"><span class="nk-menu-text">Administrar Usuarios</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="/admin/mesa" class="nk-menu-link"><span class="nk-menu-text">Administrar Mesas</span></a>
+                                            <a href="./views/mesas.html" class="nk-menu-link"><span class="nk-menu-text">Administrar Mesas</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="/admin/producto" class="nk-menu-link"><span class="nk-menu-text">Administrar Productos</span></a>
+                                            <a href="./views/productos.html" class="nk-menu-link"><span class="nk-menu-text">Administrar Productos</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
@@ -379,30 +379,8 @@
                                                             <th class="nk-tb-col nk-tb-col-tools text-right"></th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody>
-                                                        <% for(let user of users) { %>
-                                                            <tr>
-                                                                <td class="nk-tb-col"><%=user.idUsuario%></td>
-                                                                <td><%=user.nombre%></td>
-                                                                <td><%=user.apellido%></td>
-                                                                <td><%=user.rol%></td>
-                                                                <td class="nk-tb-col nk-tb-col-tools">
-                                                                    <ul class="nk-tb-actions gx-1">
-                                                                        <li>
-                                                                            <div class="drodown">
-                                                                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                                    <ul class="link-list-opt no-bdr">
-                                                                                        <li><a href="#"><em class="icon ni ni-edit"></em><span>Editar</span></a></li>
-                                                                                        <li><a href="#"><em class="icon ni ni-trash"></em><span>Eliminar</span></a></li>
-                                                                                    </ul>
-                                                                                </div>
-                                                                            </div>
-                                                                        </li>
-                                                                    </ul>
-                                                                </td>
-                                                            </tr>
-                                                        <% } %>
+                                                    <tbody id = "usuarios">
+
                                                     </tbody>
                                                 </table>
                                             </div>
