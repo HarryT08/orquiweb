@@ -14,6 +14,8 @@ const API_URL = "http://localhost:3000";
 // xhr.addEventListener("load", onRequestHandler);
 // xhr.open('GET', 'http://localhost:3000/admin/user');
 // xhr.send();
+
+//Con esta se obtienen cosas de la API
 // function request() {
 //     $.ajax({
 //         type: 'GET',
@@ -46,7 +48,7 @@ $('#form-login').on('submit', function(e){
         if(response.ok){
             response.json().then(function(result){
                 if(result === 'admin'){
-                    window.location.href = 'google.com';
+                    window.location.href = './views/home_admin.html';
                 }
             }); 
         }else{
