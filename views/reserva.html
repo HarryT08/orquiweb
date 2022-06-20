@@ -80,11 +80,19 @@
                                         <span class="nk-menu-text">Estadisticas</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
-                                <li class="nk-menu-item">
-                                    <a href="./views/reserva.html" class="nk-menu-link">
+                                <li class="nk-menu-item has-sub">
+                                    <a href="#" class="nk-menu-link nk-menu-toggle">
                                         <span class="nk-menu-icon"><em class="icon ni ni-grid-alt-fill"></em></span>
                                         <span class="nk-menu-text">Reservas</span>
                                     </a>
+                                    <ul class="nk-menu-sub">
+                                        <li class="nk-menu-item">
+                                            <a href="./views/reserva.html" class="nk-menu-link"><span class="nk-menu-text">Realizar reserva</span></a>
+                                        </li>
+                                        <li class="nk-menu-item">
+                                            <a href="./views/eliminarReserva.html" class="nk-menu-link"><span class="nk-menu-text">Eliminar reserva</span></a>
+                                        </li>
+                                    </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
                                     <a href="#" class="nk-menu-link">
@@ -174,10 +182,8 @@
                                         <div class="nk-block-head-content">
                                             <h2 class="nk-block-title fw-normal">Reserva de mesas</h2>
                                         </div>
-                                        <h4 class="nk-block-title fw-normal">Significado de los colores:
+                                        <h4 class="nk-block-title fw-normal">Se muestran las mesas libres para reservar:
                                             <span class="badge badge-pill badge-success">Estado: libre</span>
-                                            <span class="badge badge-pill badge-danger">Estado: ocupado</span>
-                                            <span class="badge badge-pill badge-warning">Estado: reservado</span>
                                         </h4>
                                     </div><!-- .nk-block-head -->
                                     <div class="nk-block nk-block-lg">
@@ -196,6 +202,63 @@
                     </div>
                 </div>
                 <!-- content @e -->
+
+                <!-- modal para hacer reserva -->
+                <div class="modal fade" tabindex="-1" id="modalDefault">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modal-title">Realizar reserva</h5>
+                                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                                    <em class="icon ni ni-cross"></em>
+                                </a>
+                            </div>
+                            <div class="modal-body">
+                                <div id="alert" role="alert">
+                                </div>
+                                <form action="#" onsubmit="return false;" class="form-validate is-alter">
+                                    <input type="text" class="form-control" id="idMesa" hidden>
+                                    <div class="form-group">
+                                        <label class="form-label" for="fecha">Fecha de la reserva</label>
+                                        <div class="form-control-wrap">
+                                            <div class="form-icon form-icon-right">
+                                                <em class="icon ni ni-calendar-alt"></em>
+                                            </div>
+                                            <input type="text" class="form-control date-picker" id="fecha" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="hora">Hora de la reserva</label>
+                                        <div class="form-control-wrap has-timepicker">
+                                            <input type="text" class="form-control time-picker" id="hora" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="nombre">Nombre del cliente</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="nombre">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="apellido">Apellido del cliente</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="apellido">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="notas">Notas</label>
+                                        <div class="form-control-wrap">
+                                            <textarea class="form-control form-control-sm" id="notas" placeholder="Notas para tu reserva"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button onclick="realizarReserva()" type="button" id="btn-form" class="btn btn-lg btn-primary">Reservar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- footer @s -->
                 <div class="nk-footer">
