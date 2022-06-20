@@ -40,8 +40,8 @@ function loadData() {
 }
 
 
-function modalUpdate(idUsuario) {
-    document.getElementById('modal-title').innerHTML = "Actualizar usuario";
+function modalUpdate(idProducto) {
+    document.getElementById('modal-title').innerHTML = "Actualizar producto";
     let btn = document.getElementById('btn-form');
     btn.innerHTML = "Actualizar";
     btn.onclick = enviarFormUpdate;
@@ -50,21 +50,105 @@ function modalUpdate(idUsuario) {
     div.className = '';
     $.ajax({
         type: 'GET',
-        url: `${API_URL}/admin/user/${idUsuario}`,
+        url: `${API_URL}/admin/producto/${idProducto}`,
         async: true,
         cache: false,
         success: function (data) {
-            console.log(data);
-            document.getElementById('idUsuario').value = data[0].idUsuario;
-            document.getElementById('username').value = data[0].username;
-            document.getElementById('name').value = data[0].nombre;
-            document.getElementById('apellido').value = data[0].apellido;
+            console.log("actualizar " , data);
+            document.getElementById('idProducto').value = data[0].idProducto;
+            document.getElementById('nombre').value = data[0].nombre;
+            document.getElementById('precio').value = data[0].costoUnidad;
+        }
+    });
+}
+
+function enviarFormUpdate() {
+    let idProducto = document.getElementById('idProducto').value;
+    let nombre = document.getElementById('nombre').value; 
+    let costoUnidad = document.getElementById('precio').value;
+
+    if (costoUnidad === '' || nombre === '') {
+        let div = document.getElementById('alert');
+        div.innerHTML = `
+            <em class="icon ni ni-cross-circle"></em> <strong>Campos vacios, revise nuevamente</strong>.
+        `;
+        div.className = 'alert alert-danger alert-icon';
+    } else {
+        var data = {
+            nombre, 
+            costoUnidad
+        }
+        fetch(`${API_URL}/admin/producto/${idProducto}`, {
+            method: 'PATCH',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }).then(function (response) {
+            Swal.fire({
+                title: 'Actualizado!',
+                text: 'El producto ha sido actualizado exitosamente.',
+                icon: 'success'
+            }).then((willDelete) => {
+                window.location.href = "./views/productos.html";
+            });
+        })
+    }
+}
+
+
+
+
+function eliminar(id) {
+    Swal.fire({
+        title: 'Estás seguro?',
+        text: "Al eliminar no podrás revertirlo!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Confirmar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                type: 'DELETE',
+                url: `${API_URL}/admin/producto/${id}`,
+                async: true,
+                cache: false,
+            }).done(function () {
+                Swal.fire({
+                    title: 'Borrado!',
+                    text: 'El producto ha sido eliminado.',
+                    icon: 'success'
+                }).then(() => {
+                    window.location.href = "./views/productos.html";
+                });
+            }).fail(function () {
+                Swal.fire({
+                    title: 'No se ha podido eliminar',
+                    text: 'Ha ocurrido un error',
+                    icon: 'error'
+                });
+            });
         }
     });
 }
 
 
-function enviarForm() {
+function modalCrear() {
+    document.getElementById('modal-title').innerHTML = "Agregar Producto";
+    document.getElementById('nombre').value = "";
+    document.getElementById('precio').value = "";
+    let btn = document.getElementById('btn-form');
+    btn.innerHTML = "Agregar";
+    btn.onclick = enviarFormCrear;
+    let div = document.getElementById('alert');
+    div.innerHTML = "";
+    div.className = '';
+}
+
+function enviarFormCrear() {
+    console.log('entro');
     let nombre = document.getElementById('nombre').value;
     let precio = document.getElementById('precio').value;
 
@@ -103,39 +187,4 @@ function enviarForm() {
             }
         })
     }
-}
-
-function eliminar(id) {
-    Swal.fire({
-        title: 'Estás seguro?',
-        text: "Al eliminar no podrás revertirlo!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Confirmar!'
-    }).then((result) => {
-        if (result.isConfirmed) {
-            $.ajax({
-                type: 'DELETE',
-                url: `${API_URL}/admin/producto/${id}`,
-                async: true,
-                cache: false,
-            }).done(function () {
-                Swal.fire({
-                    title: 'Borrado!',
-                    text: 'El producto ha sido eliminado.',
-                    icon: 'success'
-                }).then(() => {
-                    window.location.href = "./views/productos.html";
-                });
-            }).fail(function () {
-                Swal.fire({
-                    title: 'No se ha podido eliminar',
-                    text: 'Ha ocurrido un error',
-                    icon: 'error'
-                });
-            });
-        }
-    });
 }
