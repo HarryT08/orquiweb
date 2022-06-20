@@ -4,7 +4,7 @@ const AdminServices = require("./../services/adminServices");
 const adminServices = new AdminServices()
 
 //Rutas para las vistas del administrador
-router.get('/user', (req, res) => {
+router.get('/', (req, res) => {
     adminServices.getUsers((users) => {
         res.json(users);
     })

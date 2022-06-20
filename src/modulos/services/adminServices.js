@@ -2,6 +2,7 @@ const mysql = require('mysql');
 const bd = require('../database/connectMySQL');
 
 class AdminServices {
+
     constructor() {
 
     }
@@ -65,6 +66,7 @@ class AdminServices {
             })
         })
     }
+    
 }
 
 module.exports = AdminServices;
