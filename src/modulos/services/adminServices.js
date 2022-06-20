@@ -115,6 +115,18 @@ class AdminServices {
         });
     }
 
+    getProducto(id, callback){
+        let read = 'SELECT * FROM producto WHERE idProducto=?';
+        bd.getConnection(function(err,connection){
+            if(err) throw err;
+            connection.query(read, [id], function(err, result){
+                if(err) throw err;
+                connection.release();
+                callback(result);                
+            })
+        })
+    }
+
     createProducto(data, callback){
         let query = 'INSERT INTO producto SET ?'
         bd.getConnection(function(err, connection){
@@ -135,6 +147,18 @@ class AdminServices {
                 if (err) throw err;
                 connection.release();
                 callback(result);                
+            })
+        })
+    }
+    
+    updateProducto(data, id, callback){
+        let update = 'UPDATE producto SET ? WHERE idProducto = ?';
+        bd.getConnection(function(err, connection) {
+            if(err) throw err;
+            connection.query(update, [data, id], function(err, result){
+                if(err) throw err;
+                connection.release();
+                callback(result);
             })
         })
     }
