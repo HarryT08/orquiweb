@@ -1,7 +1,7 @@
 const API_URL = "http://localhost:3000";
 document.addEventListener("DOMContentLoaded", loadData());
 
-function loadData(){
+function loadData() {
     $.ajax({
         type: 'GET',
         url: `${API_URL}/admin/producto`,
@@ -65,11 +65,10 @@ function modalUpdate(idUsuario) {
 
 
 function enviarForm() {
-    let idProducto = document.getElementById('idProducto').value;
     let nombre = document.getElementById('nombre').value;
     let precio = document.getElementById('precio').value;
 
-    if (idProducto === '' || nombre === '' || precio === '') {
+    if (nombre === '' || precio === '') {
         let div = document.getElementById('alert');
         div.innerHTML = `
             <em class="icon ni ni-cross-circle"></em> <strong>Campos vacios, revise nuevamente</strong>.
@@ -77,9 +76,8 @@ function enviarForm() {
         div.className = 'alert alert-danger alert-icon';
     } else {
         var data = {
-            idProducto,
-            nombre, 
-            precio,
+            nombre: nombre,
+            costoUnidad: precio
         }
         fetch(`${API_URL}/admin/producto`, {
             method: 'POST',
@@ -91,7 +89,7 @@ function enviarForm() {
             if (response.ok) {
                 Swal.fire({
                     title: 'Producto Registrado!',
-                    text: 'El producto ha sido registrada exitosamente.',
+                    text: 'El producto ha sido registrado exitosamente.',
                     icon: 'success'
                 }).then((willDelete) => {
                     window.location.href = "./views/productos.html";
