@@ -49,6 +49,18 @@ router.get('/mesa', (req, res) => {
     })
 });
 
+router.get('/mesa/libre', (req, res) => {
+    adminServices.getMesasByEstado('disponible', (mesas) => {
+        res.json(mesas);
+    })
+});
+
+router.get('/mesa/reservada', (req, res) => {
+    adminServices.getMesasByEstado('reservada', (mesas) => {
+        res.json(mesas);
+    })
+});
+
 router.delete('/mesa/:id', (req, res) => {
     const { id } = req.params;
     adminServices.deleteMesa((result) => {
@@ -92,6 +104,25 @@ router.delete('/producto/:id', (req, res) => {
         res.json(result);
     }, id)
 });
+/**
+ * ---------------------------------------------------RUTAS PARA GESTIONAR RESERVAS-------------------------------------------
+**/
+router.post('/reserva', (req, res) => {
+    adminServices.createReserva(req.body, (result) => {
+        adminServices.updateStateMesa(req.body.idMesa, (result) => {
+            res.json(result);
+        })
+    })
+});
+
+router.delete('/reserva/:id', (req, res) => {
+    const { id } = req.params;
+    adminServices.deleteReserva(id, (result) => {
+        res.status(200).json(result);
+    })
+});
+
+
 /**
  * ---------------------------------------------------OTRAS RUTAS-------------------------------------------
 **/

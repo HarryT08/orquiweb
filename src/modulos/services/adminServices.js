@@ -78,6 +78,18 @@ class AdminServices {
             })
         });
     }
+
+    getMesasByEstado(estado, callback){
+        let readQuery = `SELECT * FROM mesa WHERE estado = ?`;
+        bd.getConnection( function (err, connection)   {
+            if (err) throw err;
+            connection.query(readQuery,[estado], function (err, result){
+                if (err) throw err;
+                connection.release();
+                callback(result);                
+            })
+        });
+    }
     
     createMesa(data, callback){
         let query = 'INSERT INTO mesa SET ?'
@@ -99,6 +111,18 @@ class AdminServices {
                 if (err) throw err;
                 connection.release();
                 callback(result);                
+            })
+        })
+    }
+
+    updateStateMesa(id, callback){
+        let update = `UPDATE mesa SET estado = 'reservada' WHERE idMesa = ?`;
+        bd.getConnection(function(err, connection) {
+            if(err) throw err;
+            connection.query(update, [id], function(err, result){
+                if(err) throw err;
+                connection.release();
+                callback(result);
             })
         })
     }
@@ -135,6 +159,30 @@ class AdminServices {
                 if (err) throw err;
                 connection.release();
                 callback(result);                
+            })
+        })
+    }
+
+    createReserva(data, callback){
+        let query = 'INSERT INTO reserva SET ?'
+        bd.getConnection(function(err, connection){
+            if(err) callback(err)
+            connection.query(query, [data], (err, result) => {
+                if(err) callback(err)
+                connection.release();
+                callback(result);                
+            })
+        });
+    }
+
+    deleteReserva(id, callback){
+        let query = `UPDATE mesa SET estado = 'disponible' WHERE idMesa = ?`;
+        bd.getConnection(function(err, connection){
+            if (err) throw err;
+            connection.query(query, [id], (err, result) => {
+                if(err) throw err;
+                connection.release();
+                callback(result);
             })
         })
     }
