@@ -102,6 +102,42 @@ class AdminServices {
             })
         })
     }
+
+    getProductos(callback){   
+        let query = 'SELECT * FROM producto'
+        bd.getConnection( function (err, connection)   {
+            if (err) throw err;
+            connection.query(query, function (err, result){
+                if (err) throw err;
+                callback(result);
+                connection.release();
+            })
+        });
+    }
+
+    createProducto(data, callback){
+        let query = 'INSERT INTO producto SET ?'
+        bd.getConnection(function(err, connection){
+            if(err) callback(err)
+            connection.query(query, [data], (err, result) => {
+                if(err) callback(err)
+                callback(result);
+                connection.release();
+            })
+        });
+    }
+
+    deleteMesa(callback, id){
+        let query = 'DELETE FROM producto WHERE idProducto = ?';
+        bd.getConnection(function(err,connection){
+            if (err) throw err;
+            connection.query(query, [id],(err, result, fields) => {
+                if (err) throw err;
+                connection.release();
+                callback(result);                
+            })
+        })
+    }
 }
 
 module.exports = AdminServices;

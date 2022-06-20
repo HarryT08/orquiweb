@@ -4,7 +4,9 @@ const AdminServices = require("./../services/adminServices");
 const adminServices = new AdminServices()
 
 //Rutas para las vistas del administrador
-//Rutas para administrar usuarios
+/**
+ * ---------------------------------------------------RUTAS PARA ADMINISTRAS USUARIOS-------------------------------------------
+**/
 router.get('/user', (req, res) => {
     adminServices.getUsers((users) => {
         res.json(users);
@@ -38,7 +40,9 @@ router.delete('/user/:id', (req, res) => {
     }, id)
 });
 
-//Rutas para administrar mesas
+/**
+ * -------------------------------------------------RUTAS PARA ADMINISTRAR MESAS-------------------------------------------
+**/
 router.get('/mesa', (req, res) => {
     adminServices.getMesas((mesas) => {
         res.json(mesas);
@@ -62,9 +66,35 @@ router.post('/mesa', (req, res) => {
     })
 })
 
+/**
+ * ---------------------------------------------------RUTAS PARA ADMINISTRAR PRODUCTOS-------------------------------------------
+**/
+
 router.get('/producto', (req, res) => {
-    res.render('productos');
+    adminServices.getProductos((productos) => {
+        res.json(productos);
+    })
 });
+
+router.post('/producto', (req, res) => {
+    adminServices.createProduto(req.body, (result) => {
+        if (result === 'error') {
+            res.status(404).json(result);
+        } else {
+            res.json(result);
+        }
+    })
+});
+
+router.delete('/producto/:id', (req, res) => {
+    const { id } = req.params;
+    adminServices.deleteProducto((result) => {
+        res.json(result);
+    }, id)
+});
+/**
+ * ---------------------------------------------------OTRAS RUTAS-------------------------------------------
+**/
 
 router.get('/estadistica', (req, res) => {
     res.render('estadisticas');
