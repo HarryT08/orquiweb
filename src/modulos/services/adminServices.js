@@ -6,6 +6,17 @@ class AdminServices {
 
     }
 
+    createUser(data, callback){
+        let query = 'INSERT INTO usuario SET ?'
+        bd.getConnection(function(err, connection){
+            if(err) throw err;
+            connection.query(query, [data], (err, result) => {
+                if(err) throw err;
+                callback(result);
+                connection.release();
+            })
+        });
+    }
 
     getUsers(callback){
         let readQuery = 'SELECT * FROM usuario';
@@ -19,12 +30,40 @@ class AdminServices {
         });
     }
 
-    updateUser(callback){
-
+    getUser(id, callback){
+        let read = 'SELECT * FROM usuario WHERE idUsuario=?';
+        bd.getConnection(function(err,connection){
+            if(err) throw err;
+            connection.query(read, [id], function(err, result){
+                if(err) throw err;
+                connection.release();
+                callback(result);                
+            })
+        })
     }
 
-    deleteUser(callback){
+    updateUser(data, id, callback){
+        let update = 'UPDATE usuario SET ? WHERE idUsuario = ?';
+        bd.getConnection(function(err, connection) {
+            if(err) throw err;
+            connection.query(update, [data, id], function(err, result){
+                if(err) throw err;
+                connection.release();
+                callback(result);
+            })
+        })
+    }
 
+    deleteUser(callback, id){
+        let query = 'DELETE FROM usuario WHERE idUsuario = ?';
+        bd.getConnection(function(err,connection){
+            if (err) throw err;
+            connection.query(query, [id],(err, result, fields) => {
+                if (err) throw err;
+                callback(result);
+                connection.release();
+            })
+        })
     }
 }
 
