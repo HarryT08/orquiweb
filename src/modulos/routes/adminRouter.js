@@ -77,7 +77,7 @@ router.get('/producto', (req, res) => {
 });
 
 router.post('/producto', (req, res) => {
-    adminServices.createProduto(req.body, (result) => {
+    adminServices.createProducto(req.body, (result) => {
         if (result === 'error') {
             res.status(404).json(result);
         } else {

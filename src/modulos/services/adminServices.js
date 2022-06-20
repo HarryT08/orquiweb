@@ -127,7 +127,7 @@ class AdminServices {
         });
     }
 
-    deleteMesa(callback, id){
+    deleteProducto(callback, id){
         let query = 'DELETE FROM producto WHERE idProducto = ?';
         bd.getConnection(function(err,connection){
             if (err) throw err;
