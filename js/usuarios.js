@@ -13,7 +13,7 @@ function loadData() {
                 let tr = document.createElement('tr');
                 tr.className = 'tb-tnx-item';
                 tr.innerHTML = `
-                <td class="nk-tb-col">${user.idUsuario}</td>
+                <td>${user.idUsuario}</td>
                 <td>${user.username}</td>
                 <td>${user.nombre}</td>
                 <td>${user.apellido}</td>
@@ -26,7 +26,7 @@ function loadData() {
                                 <div class="dropdown-menu dropdown-menu-right">
                                     <ul class="link-list-opt no-bdr">
                                         <li><a onclick="modalUpdate(${user.idUsuario})" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-edit"></em><span>Editar</span></a></li>
-                                        <li><a onclick="eliminar(${user.idUsuario})"><em class="icon ni ni-trash"></em><span>Eliminar</span></a></li>
+                                        <li><a onclick="eliminar(${user.idUsuario})" style="cursor:pointer;" ><em class="icon ni ni-trash"></em><span>Eliminar</span></a></li>
                                     </ul>
                                 </div>
                         </div>
@@ -61,7 +61,7 @@ function eliminar(id) {
                     title: 'Borrado!',
                     text: 'El usuario ha sido eliminado.',
                     icon: 'success'
-                }).then((willDelete) => {
+                }).then(() => {
                     window.location.href = "./views/usuarios.html";
                 });
             }).fail(function () {

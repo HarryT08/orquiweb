@@ -18,7 +18,7 @@ function loadData() {
                 ${estado(mesa.estado)}                    
                 </td>
                 <td class="nk-tb-col nk-tb-col-tools">
-                    <a onclick="eliminar(${mesa.idMesa})"><em class="icon ni ni-trash"></em><span>Eliminar</span></a>
+                    <a onclick="eliminar(${mesa.idMesa})" style="cursor:pointer;"><em class="icon ni ni-trash" ></em><span>Eliminar</span></a>
                 </td>
             `;
                 tbody.appendChild(tr);
