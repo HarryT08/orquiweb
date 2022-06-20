@@ -66,7 +66,42 @@ class AdminServices {
             })
         })
     }
+
+    getMesas(callback){
+        let readQuery = 'SELECT * FROM mesa';
+        bd.getConnection( function (err, connection)   {
+            if (err) throw err;
+            connection.query(readQuery, function (err, result){
+                if (err) throw err;
+                connection.release();
+                callback(result);                
+            })
+        });
+    }
     
+    createMesa(data, callback){
+        let query = 'INSERT INTO mesa SET ?'
+        bd.getConnection(function(err, connection){
+            if(err) callback('error');
+            connection.query(query, [data], (err, result) => {
+                if(err) callback('error');
+                callback(result);
+                connection.release();
+            })
+        });
+    }
+
+    deleteMesa(callback, id){
+        let query = 'DELETE FROM mesa WHERE idMesa = ?';
+        bd.getConnection(function(err,connection){
+            if (err) throw err;
+            connection.query(query, [id],(err, result, fields) => {
+                if (err) throw err;
+                connection.release();
+                callback(result);                
+            })
+        })
+    }
 }
 
 module.exports = AdminServices;
