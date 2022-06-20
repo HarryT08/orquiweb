@@ -7,23 +7,23 @@ class AdminServices {
 
     }
 
-    createUser(data, callback){
+    createUser(data, callback) {
         let query = 'INSERT INTO usuario SET ?'
-        bd.getConnection(function(err, connection){
-            if(err) throw err;
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
             connection.query(query, [data], (err, result) => {
-                if(err) throw err;
+                if (err) throw err;
                 callback(result);
                 connection.release();
             })
         });
     }
 
-    getUsers(callback){
+    getUsers(callback) {
         let readQuery = 'SELECT * FROM usuario';
-        bd.getConnection( function (err, connection)   {
+        bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(readQuery, function (err, result){
+            connection.query(readQuery, function (err, result) {
                 if (err) throw err;
                 callback(result);
                 connection.release();
@@ -31,35 +31,35 @@ class AdminServices {
         });
     }
 
-    getUser(id, callback){
+    getUser(id, callback) {
         let read = 'SELECT * FROM usuario WHERE idUsuario=?';
-        bd.getConnection(function(err,connection){
-            if(err) throw err;
-            connection.query(read, [id], function(err, result){
-                if(err) throw err;
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(read, [id], function (err, result) {
+                if (err) throw err;
                 connection.release();
-                callback(result);                
+                callback(result);
             })
         })
     }
 
-    updateUser(data, id, callback){
+    updateUser(data, id, callback) {
         let update = 'UPDATE usuario SET ? WHERE idUsuario = ?';
-        bd.getConnection(function(err, connection) {
-            if(err) throw err;
-            connection.query(update, [data, id], function(err, result){
-                if(err) throw err;
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(update, [data, id], function (err, result) {
+                if (err) throw err;
                 connection.release();
                 callback(result);
             })
         })
     }
 
-    deleteUser(callback, id){
+    deleteUser(callback, id) {
         let query = 'DELETE FROM usuario WHERE idUsuario = ?';
-        bd.getConnection(function(err,connection){
+        bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(query, [id],(err, result, fields) => {
+            connection.query(query, [id], (err, result, fields) => {
                 if (err) throw err;
                 callback(result);
                 connection.release();
@@ -67,71 +67,71 @@ class AdminServices {
         })
     }
 
-    getMesas(callback){
+    getMesas(callback) {
         let readQuery = 'SELECT * FROM mesa';
-        bd.getConnection( function (err, connection)   {
+        bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(readQuery, function (err, result){
+            connection.query(readQuery, function (err, result) {
                 if (err) throw err;
                 connection.release();
-                callback(result);                
+                callback(result);
             })
         });
     }
 
-    getMesasByEstado(estado, callback){
+    getMesasByEstado(estado, callback) {
         let readQuery = `SELECT * FROM mesa WHERE estado = ?`;
-        bd.getConnection( function (err, connection)   {
+        bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(readQuery,[estado], function (err, result){
+            connection.query(readQuery, [estado], function (err, result) {
                 if (err) throw err;
                 connection.release();
-                callback(result);                
+                callback(result);
             })
         });
     }
-    
-    createMesa(data, callback){
+
+    createMesa(data, callback) {
         let query = 'INSERT INTO mesa SET ?'
-        bd.getConnection(function(err, connection){
-            if(err) callback('error');
+        bd.getConnection(function (err, connection) {
+            if (err) callback('error');
             connection.query(query, [data], (err, result) => {
-                if(err) callback('error');
+                if (err) callback('error');
                 callback(result);
                 connection.release();
             })
         });
     }
 
-    deleteMesa(callback, id){
+    deleteMesa(callback, id) {
         let query = 'DELETE FROM mesa WHERE idMesa = ?';
-        bd.getConnection(function(err,connection){
+        bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(query, [id],(err, result, fields) => {
+            connection.query(query, [id], (err, result, fields) => {
                 if (err) throw err;
                 connection.release();
-                callback(result);                
+                callback(result);
             })
         })
     }
 
-    updateStateMesa(id, callback){
+    updateStateMesa(id, callback) {
         let update = `UPDATE mesa SET estado = 'reservada' WHERE idMesa = ?`;
-        bd.getConnection(function(err, connection) {
-            if(err) throw err;
-            connection.query(update, [id], function(err, result){
-                if(err) throw err;
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(update, [id], function (err, result) {
+                if (err) throw err;
                 connection.release();
                 callback(result);
             })
         })
     }
 
-    getProductos(callback){   
+    getProductos(callback) {
         let query = 'SELECT * FROM producto'
-        bd.getConnection( function (err, connection)   {
+        bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(query, function (err, result){
+            connection.query(query, function (err, result) {
                 if (err) throw err;
                 callback(result);
                 connection.release();
@@ -139,48 +139,72 @@ class AdminServices {
         });
     }
 
-    createProducto(data, callback){
-        let query = 'INSERT INTO producto SET ?'
-        bd.getConnection(function(err, connection){
-            if(err) callback(err)
-            connection.query(query, [data], (err, result) => {
-                if(err) callback(err)
-                callback(result);
-                connection.release();
-            })
-        });
-    }
-
-    deleteProducto(callback, id){
-        let query = 'DELETE FROM producto WHERE idProducto = ?';
-        bd.getConnection(function(err,connection){
+    getProducto(id, callback) {
+        let read = 'SELECT * FROM producto WHERE idProducto=?';
+        bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(query, [id],(err, result, fields) => {
+            connection.query(read, [id], function (err, result) {
                 if (err) throw err;
                 connection.release();
-                callback(result);                
+                callback(result);
             })
         })
     }
 
-    createReserva(data, callback){
-        let query = 'INSERT INTO reserva SET ?'
-        bd.getConnection(function(err, connection){
-            if(err) callback(err)
+    createProducto(data, callback) {
+        let query = 'INSERT INTO producto SET ?'
+        bd.getConnection(function (err, connection) {
+            if (err) callback(err)
             connection.query(query, [data], (err, result) => {
-                if(err) callback(err)
+                if (err) callback(err)
+                callback(result);
                 connection.release();
-                callback(result);                
             })
         });
     }
 
-    deleteReserva(id, callback){
+    deleteProducto(callback, id) {
+        let query = 'DELETE FROM producto WHERE idProducto = ?';
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(query, [id], (err, result, fields) => {
+                if (err) throw err;
+                connection.release();
+                callback(result);
+            })
+        })
+    }
+
+    createReserva(data, callback) {
+        let query = 'INSERT INTO reserva SET ?'
+        bd.getConnection(function (err, connection) {
+            if (err) callback(err)
+            connection.query(query, [data], (err, result) => {
+                if (err) callback(err)
+                connection.release();
+                callback(result);
+            })
+        });
+    }
+
+    deleteReserva(id, callback) {
         let query = `UPDATE mesa SET estado = 'disponible' WHERE idMesa = ?`;
-        bd.getConnection(function(err, connection){
+        bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(query, [id], (err, result) => {
-                if(err) throw err;
+                if (err) throw err;
+                connection.release();
+                callback(result);
+            })
+        })
+    }
+
+    updateProducto(data, id, callback) {
+        let update = 'UPDATE producto SET ? WHERE idProducto = ?';
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(update, [data, id], function (err, result) {
+                if (err) throw err;
                 connection.release();
                 callback(result);
             })

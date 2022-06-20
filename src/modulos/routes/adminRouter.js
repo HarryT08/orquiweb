@@ -68,13 +68,10 @@ router.delete('/mesa/:id', (req, res) => {
     }, id)
 });
 
-router.post('/mesa', (req, res) => {
-    adminServices.createMesa(req.body, (result) => {
-        if (result === 'error') {
-            res.status(404).json(result);
-        } else {
-            res.json(result);
-        }
+router.patch('/user/:id', (req, res) => {
+    let { id } = req.params;
+    adminServices.updateProducto(req.body, id, (result) => {
+        res.json(result);
     })
 })
 
@@ -84,6 +81,13 @@ router.post('/mesa', (req, res) => {
 
 router.get('/producto', (req, res) => {
     adminServices.getProductos((productos) => {
+        res.json(productos);
+    })
+});
+
+router.get('/producto/:id', (req, res) => {
+    let { id } = req.params;
+    adminServices.getProducto( id, (productos) => {
         res.json(productos);
     })
 });
@@ -104,6 +108,14 @@ router.delete('/producto/:id', (req, res) => {
         res.json(result);
     }, id)
 });
+
+router.patch('/producto/:id', (req, res) => {
+    const { id } = req.params;
+    adminServices.updateProducto(req.body, id , (result) => {
+        res.json(result);
+    })
+});
+
 /**
  * ---------------------------------------------------RUTAS PARA GESTIONAR RESERVAS-------------------------------------------
 **/
