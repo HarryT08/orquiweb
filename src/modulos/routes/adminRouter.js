@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const AdminServices = require("./../services/adminServices");
-const adminServices = new AdminServices()
+const adminServices = new AdminServices();
 
 //Rutas para las vistas del administrador
 /**

@@ -1,5 +1,6 @@
-const mysql = require('mysql');
 const bd = require('../database/connectMySQL');
+const bcrypt = require("bcryptjs");
+const rondas = 10;
 
 class AdminServices {
 
@@ -9,6 +10,9 @@ class AdminServices {
 
     createUser(data, callback) {
         let query = 'INSERT INTO usuario SET ?'
+        bcrypt.hash(data.password, rondas, (err, encriptada) => {
+            data.password = encriptada;
+        });
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(query, [data], (err, result) => {
@@ -45,6 +49,9 @@ class AdminServices {
 
     updateUser(data, id, callback) {
         let update = 'UPDATE usuario SET ? WHERE idUsuario = ?';
+        bcrypt.hash(data.password, rondas, (err, encriptada) => {
+            data.password = encriptada;
+        });
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(update, [data, id], function (err, result) {
@@ -199,7 +206,7 @@ class AdminServices {
         })
     }
 
-    getReservas(date, callback) {        
+    getReservas(date, callback) {
         let read = 'SELECT * FROM reserva WHERE fecha >= ?';
         bd.getConnection(function (err, connection) {
             if (err) throw err;

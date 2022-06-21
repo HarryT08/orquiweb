@@ -1,5 +1,6 @@
-const mysql = require('mysql');
 const bd = require('../database/connectMySQL');
+const bcrypt = require("bcryptjs");
+const rondas = 10;
 
 class UserServices {
     constructor() {
@@ -18,14 +19,21 @@ class UserServices {
         });
     }
 
-    findOne(callback, username, password){
-        let readQuery = 'SELECT * FROM usuario WHERE username = ? AND password = ?';
+    findOne(callback, username, password) {
+        let readQuery = 'SELECT * FROM usuario WHERE username = ?';
         bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(readQuery, [username , password] ,  (err, result) => {
+            connection.query(readQuery, [username], (err, result) => {
                 if (err) throw err;
                 connection.release();
-                callback(result[0]);                
+                bcrypt.compare(password, result[0].password, (err, coinciden) => {
+                    if (coinciden) {
+                        callback(result[0]);
+                    }
+                    else {
+                        callback(null);
+                    }
+                });
             })
         });
     }

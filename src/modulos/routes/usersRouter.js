@@ -9,7 +9,7 @@ router.post("/", (req, res) => {
   if (username && password) {
     service.findOne(
       (user) => {
-        if (user) {          
+        if (user) {
           res.status(200).json(user);
         } else {          //Caso de no encontrar credenciales en la BD
           res.status(404).json({
