@@ -25,8 +25,8 @@ class UserServices {
             if (err) throw err;
             connection.query(readQuery, [username , password] ,  (err, result) => {
                 if (err) throw err;
-                callback(result[0])
-                connection.release()
+                connection.release();
+                callback(result[0]);                
             })
         });
     }
