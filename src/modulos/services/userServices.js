@@ -19,7 +19,6 @@ class UserServices {
     }
 
     findOne(callback, username, password){
-        console.log(username , " " , password);
         let readQuery = 'SELECT * FROM usuario WHERE username = ? AND password = ?';
         bd.getConnection(function (err, connection) {
             if (err) throw err;
