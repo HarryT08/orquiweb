@@ -122,14 +122,15 @@ router.patch('/producto/:id', (req, res) => {
 router.get('/reserva/:id', (req, res) => {
     const {id} = req.params;
     const {date} = req.query;
-    adminServices.getReserva(id, date, (result) => {
+    adminServices.getReserva(id, date, time, (result) => {
         res.json(result);
     });
 });
 
 router.get('/reserva', (req, res) => {
     let {date} = req.query;
-    adminServices.getReservas(date, (result) => {
+    let {timeH} = req.query;
+    adminServices.getReservas(date, timeH, (result) => {
         res.json(result);
     });
 })

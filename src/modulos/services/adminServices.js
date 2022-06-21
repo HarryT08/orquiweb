@@ -206,11 +206,11 @@ class AdminServices {
         })
     }
 
-    getReservas(date, callback) {
-        let read = 'SELECT * FROM reserva WHERE fecha >= ?';
+    getReservas(date, time, callback) {
+        let read = 'SELECT * FROM reserva WHERE fecha >= ? AND hora >= ?';
         bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(read, [date], function (err, result) {
+            connection.query(read, [date, time], function (err, result) {
                 if (err) throw err;
                 connection.release();
                 callback(result);
