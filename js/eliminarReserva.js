@@ -1,47 +1,50 @@
 const API_URL = "http://localhost:3000";
 
 function loadData() {
+  let date = formatDate(new Date(Date.now()));
+  let data = {
+    date
+  }
   $.ajax({
     type: 'GET',
-    url: `${API_URL}/admin/mesa/reservada`,
+    url: `${API_URL}/admin/reserva`,
     async: true,
     cache: false,
+    data: data,
     success: function (data) {
       if (data.length === 0) {
-        const table = document.getElementById("view");
+        const table = document.getElementById("reservas");
         let row = document.createElement("tr");
         const mesa = document.createElement("td");
+        mesa.colSpan = 6
         mesa.innerHTML = "No hay reservas realizadas";
         row.appendChild(mesa);
         table.appendChild(row);
       }
       else {
-        const table = document.getElementById("view");
-        let row = document.createElement("tr");
-        for (let i = 0; i < data.length; i++) {
-          let id_mesa = `${data[i].idMesa}`;
-          const mesa = document.createElement("td");
-          const btnMesa = document.createElement("button");
-          btnMesa.innerHTML = id_mesa;
-          btnMesa.id = `${id_mesa}`;
-          btnMesa.classList.add('reservado');
-          btnMesa.onclick = eliminarMesa;
-          // btnMesa.onclick = cambiarEstado
-          mesa.appendChild(btnMesa);
-          row.appendChild(mesa);
-          if (((i + 1) % 4) === 0 || (i + 1) === data.length) {
-            table.appendChild(row);
-            row = document.createElement("tr");
-          }
+        const table = document.getElementById("reservas");
+        data.forEach(reserva => {
+          let tr = document.createElement('tr');
+          tr.className = 'tb-tnx-item';
+          tr.innerHTML = `
+                <td>${reserva.idMesa}</td>
+                <td>${reserva.nombreCliente}</td>
+                <td>${reserva.fecha}</td>
+                <td>${reserva.hora}</td>
+                <td><span class="badge badge-pill badge-warning">Reserva</span></td>
+                <td>
+                  <a onclick="eliminarReserva(${reserva.idMesa})" style="cursor:pointer;" ><em class="icon ni ni-trash"></em><span>Eliminar</span></a>
+                </td>
+            `;
+          table.appendChild(tr);
+        })
 
-        }
       }
     }
   });
 }
 
-function eliminarMesa() {
-  let id = this.id;
+function eliminarMesa(id) {
   Swal.fire({
     title: 'Estás seguro?',
     text: "Al eliminar no podrás revertirlo!",
@@ -74,6 +77,18 @@ function eliminarMesa() {
       });
     }
   });
+}
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+  return [
+    padTo2Digits(date.getMonth() + 1),
+    padTo2Digits(date.getDate()),
+    date.getFullYear(),
+  ].join('/');
 }
 
 document.addEventListener("DOMContentLoaded", loadData());

@@ -90,7 +90,7 @@
                                             <a href="./views/reserva.html" class="nk-menu-link"><span class="nk-menu-text">Realizar reserva</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="./views/eliminarReserva.html" class="nk-menu-link"><span class="nk-menu-text">Eliminar reserva</span></a>
+                                            <a href="./views/eliminarReserva.html" class="nk-menu-link"><span class="nk-menu-text">Ver reservas</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
@@ -224,13 +224,14 @@
                                             <div class="form-icon form-icon-right">
                                                 <em class="icon ni ni-calendar-alt"></em>
                                             </div>
-                                            <input type="text" class="form-control date-picker" id="fecha" required>
+                                            <input type="text" class="form-control date-picker" id="fecha" onchange="cambiarHoras()" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label" for="hora">Hora de la reserva</label>
-                                        <div class="form-control-wrap has-timepicker">
-                                            <input type="text" class="form-control time-picker" id="hora" required>
+                                        <label class="form-label">Hora de la reserva</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-select" id="hora">
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">

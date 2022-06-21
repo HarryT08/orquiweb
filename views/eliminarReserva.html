@@ -90,7 +90,7 @@
                                             <a href="./views/reserva.html" class="nk-menu-link"><span class="nk-menu-text">Realizar reserva</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="./views/eliminarReserva.html" class="nk-menu-link"><span class="nk-menu-text">Eliminar reserva</span></a>
+                                            <a href="./views/eliminarReserva.html" class="nk-menu-link"><span class="nk-menu-text">Ver reservas</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
@@ -180,9 +180,9 @@
                                 <div class="components-preview wide-md mx-auto">
                                     <div class="nk-block-head nk-block-head-lg wide-sm">
                                         <div class="nk-block-head-content">
-                                            <h2 class="nk-block-title fw-normal">Reserva de mesas</h2>
+                                            <h2 class="nk-block-title fw-normal">Eliminar reservas</h2>
                                         </div>
-                                        <h4 class="nk-block-title fw-normal">Se muestran las mesas reservadas para eliminar su reserva:
+                                        <h4 class="nk-block-title fw-normal">Se muestran las mesas reservadas en el día actual:
                                             <span class="badge badge-pill badge-warning">Estado: reserva</span>
                                         </h4>
                                     </div><!-- .nk-block-head -->
@@ -190,7 +190,17 @@
                                         <div class="card card-preview">
                                             <div class="card-inner">
                                                 <table class="table">
-                                                    <tbody id="view">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Número de mesa</th>
+                                                            <th>Nombre cliente</th>
+                                                            <th>Fecha</th>
+                                                            <th>Hora</th>
+                                                            <th></th>
+                                                            <th class="nk-tb-col nk-tb-col-tools text-right"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id = "reservas">
                                                     </tbody>
                                                 </table>
                                             </div>

@@ -40,8 +40,71 @@ function loadData() {
 }
 
 function cargarModal() {
-  let id = this.id;
+  let id = parseInt(this.id);
   document.getElementById('idMesa').value = id;
+  let date = new Date(Date.now());
+  document.getElementById('fecha').value = formatDate(date);
+  getReservasId(id, formatDate(date));
+}
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0');
+}
+
+function formatDate(date) {
+  return [
+    padTo2Digits(date.getMonth() + 1),
+    padTo2Digits(date.getDate()),
+    date.getFullYear(),
+  ].join('/');
+}
+
+function cambiarHoras() {
+  let fecha = document.getElementById('fecha').value;
+  let id = document.getElementById('idMesa').value;
+  getReservasId(id, fecha);
+}
+
+function getReservasId(idMesa, date) {
+  let data = {
+    date
+  }
+  $.ajax({
+    type: 'GET',
+    url: `${API_URL}/admin/reserva/${idMesa}`,
+    async: true,
+    cache: false,
+    data: data,
+    success: function (data) {
+      var datos = new Array();
+      data.forEach(reserva => {
+        datos.push(reserva.hora);
+      });
+      loadSelectHour(datos);
+    }
+  });
+}
+
+function loadSelectHour(selected) {
+  limpiarSelect();
+  let select = document.getElementById('hora');
+  for (var i = 17; i < 24; i++) {
+    let valor = i + ':00 PM';
+    if (!selected.includes(valor)) {      
+      let option = document.createElement('option');
+      option.value = i + ':00 PM';
+      option.text = i + ':00 PM';
+      select.appendChild(option);
+    }
+  }
+}
+
+function limpiarSelect() {
+  let select = document.getElementById('hora');
+  console.log(select.options.length);
+  for (var i = select.options.length; i >= 0; i--) {
+    select.remove(i);
+  }
 }
 
 function realizarReserva() {
