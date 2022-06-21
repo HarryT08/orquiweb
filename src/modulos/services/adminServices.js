@@ -212,7 +212,7 @@ class AdminServices {
     }
 
     deleteReserva(id, callback) {
-        let query = `DELETE FROM reserva WHERE id = ?`;
+        let query = `DELETE FROM reserva WHERE idReserva = ?`;
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(query, [id], (err, result) => {
