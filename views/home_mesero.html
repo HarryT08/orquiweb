@@ -15,6 +15,9 @@
   <!-- StyleSheets  -->
   <link rel="stylesheet" href="./assets/css/dashlite.css?ver=2.2.0" />
   <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=2.2.0" />
+  <!-- Jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="./js/redirect.js"></script>
 </head>
 
 <body class="nk-body bg-lighter npc-default has-sidebar">
@@ -83,45 +86,43 @@
               </div><!-- .nk-header-brand -->
               <div class="nk-header-tools">
                 <ul class="nk-quick-nav">
-                  <li class="dropdown user-dropdown">
-                    <a href="#" class="dropdown-toggle mr-n1" data-toggle="dropdown">
-                      <div class="user-toggle">
-                        <div class="user-avatar sm">
-                          <em class="icon ni ni-user-alt"></em>
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle mr-n1" data-toggle="dropdown">
+                            <div class="user-toggle">
+                                <div class="user-avatar sm">
+                                    <em class="icon ni ni-user-alt"></em>
+                                </div>
+                                <div class="user-info d-none d-xl-block">
+                                    <div class="user-status user-status-unverified" id="rol-info"></div>
+                                    <div class="user-name dropdown-indicator" id="user-info"></div>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                                <div class="user-card">
+                                    <div class="user-avatar">
+                                        <span>AB</span>
+                                    </div>
+                                    <div class="user-info">
+                                        <span class="lead-text" id="nombre-info"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-inner">
+                                <ul class="link-list">                                                    
+                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Modo Oscuro</span></a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-inner">
+                                <ul class="link-list">
+                                    <li><a href="#" onclick="signOut()"><em class="icon ni ni-signout"></em><span>Salir</span></a></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="user-info d-none d-xl-block">
-                          <div class="user-status user-status-unverified">Unverified</div>
-                          <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                      <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                        <div class="user-card">
-                          <div class="user-avatar">
-                            <span>AB</span>
-                          </div>
-                          <div class="user-info">
-                            <span class="lead-text">Abu Bin Ishtiyak</span>
-                            <span class="sub-text">info@softnio.com</span>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="dropdown-inner">
-                        <ul class="link-list">
-                          <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Modo
-                                Oscuro</span></a></li>
-                        </ul>
-                      </div>
-                      <div class="dropdown-inner">
-                        <ul class="link-list">
-                          <li><a href="#"><em class="icon ni ni-signout"></em><span>Salir</span></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
+                    </li>
                 </ul>
-              </div>
+            </div>
             </div><!-- .nk-header-wrap -->
           </div><!-- .container-fliud -->
         </div>
@@ -177,6 +178,7 @@
   <script src="./assets/js/bundle.js?ver=2.2.0"></script>
   <script src="./assets/js/scripts.js?ver=2.2.0"></script>
   <script src="./assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
+  <script src="./js/commons.js"></script>
 </body>
 
 </html>

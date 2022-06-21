@@ -18,6 +18,7 @@
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.js"
         integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="./js/redirect.js"></script>
 </head>
 
 
@@ -87,10 +88,12 @@
                                     </a>
                                     <ul class="nk-menu-sub">
                                         <li class="nk-menu-item">
-                                            <a href="./views/reserva.html" class="nk-menu-link"><span class="nk-menu-text">Realizar reserva</span></a>
+                                            <a href="./views/reserva.html" class="nk-menu-link"><span
+                                                    class="nk-menu-text">Realizar reserva</span></a>
                                         </li>
                                         <li class="nk-menu-item">
-                                            <a href="./views/eliminarReserva.html" class="nk-menu-link"><span class="nk-menu-text">Ver reservas</span></a>
+                                            <a href="./views/eliminarReserva.html" class="nk-menu-link"><span
+                                                    class="nk-menu-text">Ver reservas</span></a>
                                         </li>
                                     </ul><!-- .nk-menu-sub -->
                                 </li><!-- .nk-menu-item -->
@@ -133,8 +136,8 @@
                                                     <em class="icon ni ni-user-alt"></em>
                                                 </div>
                                                 <div class="user-info d-none d-xl-block">
-                                                    <div class="user-status user-status-unverified">Unverified</div>
-                                                    <div class="user-name dropdown-indicator">Abu Bin Ishityak</div>
+                                                    <div class="user-status user-status-unverified" id="rol-info"></div>
+                                                    <div class="user-name dropdown-indicator" id="user-info"></div>
                                                 </div>
                                             </div>
                                         </a>
@@ -145,8 +148,7 @@
                                                         <span>AB</span>
                                                     </div>
                                                     <div class="user-info">
-                                                        <span class="lead-text">Abu Bin Ishtiyak</span>
-                                                        <span class="sub-text">info@softnio.com</span>
+                                                        <span class="lead-text" id="nombre-info"></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,7 +161,7 @@
                                             </div>
                                             <div class="dropdown-inner">
                                                 <ul class="link-list">
-                                                    <li><a href="#"><em
+                                                    <li><a href="#" onclick="signOut()"><em
                                                                 class="icon ni ni-signout"></em><span>Salir</span></a>
                                                     </li>
                                                 </ul>
@@ -182,7 +184,8 @@
                                         <div class="nk-block-head-content">
                                             <h2 class="nk-block-title fw-normal">Eliminar reservas</h2>
                                         </div>
-                                        <h4 class="nk-block-title fw-normal">Se muestran las mesas reservadas en el día actual:
+                                        <h4 class="nk-block-title fw-normal">Se muestran las mesas reservadas en el día
+                                            actual:
                                             <span class="badge badge-pill badge-warning">Estado: reserva</span>
                                         </h4>
                                     </div><!-- .nk-block-head -->
@@ -200,7 +203,7 @@
                                                             <th class="nk-tb-col nk-tb-col-tools text-right"></th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id = "reservas">
+                                                    <tbody id="reservas">
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -236,6 +239,7 @@
     <script src="./assets/js/scripts.js?ver=2.2.0"></script>
     <script src="./assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
     <script src="./js/eliminarReserva.js"></script>
+    <script src="./js/commons.js"></script>
 </body>
 
 </html>

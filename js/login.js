@@ -47,6 +47,9 @@ $('#form-login').on('submit', function(e){
         if(response.ok){
             response.json().then(function(result){
                 window.location.href = `./views/home_${result.rol}.html`;
+                localStorage.setItem('user', result.username.toUpperCase());
+                localStorage.setItem('rol', result.rol.toUpperCase());
+                localStorage.setItem('nombre', result.nombre + " " + result.apellido);
             }); 
         }else{
             response.json().then(function(result){
