@@ -17,7 +17,6 @@ function loadData() {
                 <td>${producto.nombre}</td>
                 <td>${producto.costoUnidad}</td>
                 <td class="nk-tb-col nk-tb-col-tools">
-                <td class="nk-tb-col nk-tb-col-tools">
                     <ul class="nk-tb-actions gx-1">
                     <li>
                         <div class="drodown">
