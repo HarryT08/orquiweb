@@ -46,13 +46,8 @@ $('#form-login').on('submit', function(e){
     }).then(function(response){
         if(response.ok){
             response.json().then(function(result){
-                if(result === 'admin'){
-                    window.location.href = './views/home_admin.html';
-                }else if(result === 'mesero'){
-                    window.location.href = './views/home_mesero.html';
-                }else{
-                    window.location.href = './views/home_pase.html';
-                }
+                console.log("este es el result ", result);
+                window.location.href = `./views/home_${result}.html`;
             }); 
         }else{
             response.json().then(function(result){
