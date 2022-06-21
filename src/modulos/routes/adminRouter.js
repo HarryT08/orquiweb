@@ -119,11 +119,24 @@ router.patch('/producto/:id', (req, res) => {
 /**
  * ---------------------------------------------------RUTAS PARA GESTIONAR RESERVAS-------------------------------------------
 **/
+router.get('/reserva/:id', (req, res) => {
+    const {id} = req.params;
+    const {date} = req.query;
+    adminServices.getReserva(id, date, (result) => {
+        res.json(result);
+    });
+});
+
+router.get('/reserva', (req, res) => {
+    let {date} = req.query;
+    adminServices.getReservas(date, (result) => {
+        res.json(result);
+    });
+})
+
 router.post('/reserva', (req, res) => {
     adminServices.createReserva(req.body, (result) => {
-        adminServices.updateStateMesa(req.body.idMesa, (result) => {
-            res.json(result);
-        })
+        res.json(result);
     })
 });
 

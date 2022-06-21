@@ -187,8 +187,32 @@ class AdminServices {
         });
     }
 
+    getReserva(id, date, callback) {
+        let read = 'SELECT * FROM reserva WHERE idMesa = ? AND fecha = ?';
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(read, [id, date], function (err, result) {
+                if (err) throw err;
+                connection.release();
+                callback(result);
+            })
+        })
+    }
+
+    getReservas(date, callback) {        
+        let read = 'SELECT * FROM reserva WHERE fecha >= ?';
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(read, [date], function (err, result) {
+                if (err) throw err;
+                connection.release();
+                callback(result);
+            })
+        })
+    }
+
     deleteReserva(id, callback) {
-        let query = `UPDATE mesa SET estado = 'disponible' WHERE idMesa = ?`;
+        let query = `DELETE FROM reserva WHERE id = ?`;
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(query, [id], (err, result) => {
