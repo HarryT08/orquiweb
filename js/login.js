@@ -46,8 +46,7 @@ $('#form-login').on('submit', function(e){
     }).then(function(response){
         if(response.ok){
             response.json().then(function(result){
-                console.log("este es el result ", result);
-                window.location.href = `./views/home_${result}.html`;
+                window.location.href = `./views/home_${result.rol}.html`;
             }); 
         }else{
             response.json().then(function(result){
