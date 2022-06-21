@@ -89,11 +89,11 @@ function loadSelectHour(selected) {
   limpiarSelect();
   let select = document.getElementById('hora');
   for (var i = 17; i < 24; i++) {
-    let valor = i + ':00 PM';
+    let valor = i + ':00';
     if (!selected.includes(valor)) {      
       let option = document.createElement('option');
-      option.value = i + ':00 PM';
-      option.text = i + ':00 PM';
+      option.value = valor;
+      option.text = valor+' PM';
       select.appendChild(option);
     }
   }

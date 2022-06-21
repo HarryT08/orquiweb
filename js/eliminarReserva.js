@@ -33,7 +33,7 @@ function loadData() {
                 <td>${reserva.hora}</td>
                 <td><span class="badge badge-pill badge-warning">Reserva</span></td>
                 <td>
-                  <a onclick="eliminarReserva(${reserva.idMesa})" style="cursor:pointer;" ><em class="icon ni ni-trash"></em><span>Eliminar</span></a>
+                  <a onclick="eliminarReserva(${reserva.idReserva})" style="cursor:pointer;" ><em class="icon ni ni-trash"></em><span>Eliminar</span></a>
                 </td>
             `;
           table.appendChild(tr);
@@ -44,7 +44,7 @@ function loadData() {
   });
 }
 
-function eliminarMesa(id) {
+function eliminarReserva(id) {
   Swal.fire({
     title: 'Estás seguro?',
     text: "Al eliminar no podrás revertirlo!",
