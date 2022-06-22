@@ -16,9 +16,12 @@ class AdminServices {
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(query, [data], (err, result) => {
-                if (err) throw err;
-                callback(result);
-                connection.release();
+                if (err) {
+                    callback(null);
+                } else {
+                    callback(result);
+                    connection.release();
+                }
             })
         });
     }

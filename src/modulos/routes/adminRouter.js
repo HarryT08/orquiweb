@@ -28,8 +28,12 @@ router.patch('/user/:id', (req, res) => {
 })
 
 router.post('/user', (req, res) => {
-    adminServices.createUser(req.body, (result) => {
-        res.json(result);
+    adminServices.createUser(req.body, (result) => {        
+        if (result === null) {
+            res.status(404).json({msg: 'ERROR AL CREAR: USERNAME REPETIDO'});            
+        }else{
+            res.status(200).json(result);
+        }
     })
 })
 
@@ -87,7 +91,7 @@ router.get('/producto', (req, res) => {
 
 router.get('/producto/:id', (req, res) => {
     let { id } = req.params;
-    adminServices.getProducto( id, (productos) => {
+    adminServices.getProducto(id, (productos) => {
         res.json(productos);
     })
 });
@@ -111,7 +115,7 @@ router.delete('/producto/:id', (req, res) => {
 
 router.patch('/producto/:id', (req, res) => {
     const { id } = req.params;
-    adminServices.updateProducto(req.body, id , (result) => {
+    adminServices.updateProducto(req.body, id, (result) => {
         res.json(result);
     })
 });
@@ -120,16 +124,16 @@ router.patch('/producto/:id', (req, res) => {
  * ---------------------------------------------------RUTAS PARA GESTIONAR RESERVAS-------------------------------------------
 **/
 router.get('/reserva/:id', (req, res) => {
-    const {id} = req.params;
-    const {date} = req.query;
+    const { id } = req.params;
+    const { date } = req.query;
     adminServices.getReserva(id, date, time, (result) => {
         res.json(result);
     });
 });
 
 router.get('/reserva', (req, res) => {
-    let {date} = req.query;
-    let {timeH} = req.query;
+    let { date } = req.query;
+    let { timeH } = req.query;
     adminServices.getReservas(date, timeH, (result) => {
         res.json(result);
     });
