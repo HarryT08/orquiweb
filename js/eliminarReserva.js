@@ -2,8 +2,11 @@ const API_URL = "http://localhost:3000";
 
 function loadData() {
   let date = formatDate(new Date(Date.now()));
+  let time = new Date();
+  let timeH = `${time.getHours()}:${("0" + time.getMinutes()).slice(-2)}`;
   let data = {
-    date
+    date,
+    timeH
   }
   $.ajax({
     type: 'GET',

@@ -82,6 +82,7 @@ function modalCrear() {
     document.getElementById('name').value = "";
     document.getElementById('apellido').value = "";
     document.getElementById('password').value = "";
+    document.getElementById('username').disabled = false;
     let btn = document.getElementById('btn-form');
     btn.innerHTML = "Crear";
     btn.onclick = enviarFormCrear;
@@ -117,13 +118,23 @@ function enviarFormCrear() {
                 'Content-Type': 'application/json'
             }
         }).then(function (response) {
-            Swal.fire({
-                title: 'Registrado!',
-                text: 'El usuario ha sido registrado exitosamente.',
-                icon: 'success'
-            }).then((willDelete) => {
-                window.location.href = "./views/usuarios.html";
-            });
+            if (response.ok) {
+                Swal.fire({
+                    title: 'Registrado!',
+                    text: 'El usuario ha sido registrado exitosamente.',
+                    icon: 'success'
+                }).then((willDelete) => {
+                    window.location.href = "./views/usuarios.html";
+                });
+            } else {
+                response.json().then(function (result) {
+                    let div = document.getElementById('alert');
+                    div.innerHTML = `
+                        <em class="icon ni ni-cross-circle"></em> <strong>${result.msg}</strong>.
+                    `;
+                    div.className = 'alert alert-danger alert-icon';
+                });
+            }
         })
     }
 }
@@ -142,9 +153,9 @@ function modalUpdate(idUsuario) {
         async: true,
         cache: false,
         success: function (data) {
-            console.log(data);
             document.getElementById('idUsuario').value = data[0].idUsuario;
             document.getElementById('username').value = data[0].username;
+            document.getElementById('username').disabled = true;
             document.getElementById('name').value = data[0].nombre;
             document.getElementById('apellido').value = data[0].apellido;
         }
@@ -174,7 +185,7 @@ function enviarFormUpdate() {
                 apellido,
                 rol
             }
-        }else{
+        } else {
             data = {
                 username,
                 nombre,
