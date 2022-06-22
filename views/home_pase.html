@@ -11,7 +11,7 @@
   <!-- Fav Icon  -->
   <link rel="shortcut icon" href="./images/favicon.png" />
   <!-- Page Title  -->
-  <title>Mesero</title>
+  <title>Pase</title>
   <!-- StyleSheets  -->
   <link rel="stylesheet" href="./assets/css/dashlite.css?ver=2.2.0" />
   <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=2.2.0" />
@@ -73,90 +73,47 @@
         <div class="nk-header nk-header-fixed is-light">
           <div class="container-fluid">
             <div class="nk-header-wrap">
-              <div class="nk-menu-trigger d-xl-none ml-n1">
-                <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em
-                    class="icon ni ni-menu"></em></a>
-              </div>
-              <div class="nk-header-brand d-xl-none">
-                <a href="html/index.html" class="logo-link">
-                  <img class="logo-light logo-img" src="/images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
-                  <img class="logo-dark logo-img" src="/images/logo-dark.png" srcset="./images/logo-dark2x.png 2x"
-                    alt="logo-dark">
-                </a>
-              </div><!-- .nk-header-brand -->
-              <div class="nk-header-tools">
-                <ul class="nk-quick-nav">
-                    <li class="dropdown user-dropdown">
+                <div class="nk-header-tools">
+                    <ul class="nk-quick-nav">
+                      <li class="dropdown user-dropdown">
                         <a href="#" class="dropdown-toggle mr-n1" data-toggle="dropdown">
-                            <div class="user-toggle">
-                                <div class="user-avatar sm">
-                                    <em class="icon ni ni-user-alt"></em>
-                                </div>
-                                <div class="user-info d-none d-xl-block">
-                                    <div class="user-status user-status-unverified" id="rol-info"></div>
-                                    <div class="user-name dropdown-indicator" id="user-info"></div>
-                                </div>
+                          <div class="user-toggle">
+                            <div class="user-avatar sm">
+                              <em class="icon ni ni-user-alt"></em>
                             </div>
+                            <div class="user-info d-none d-xl-block">
+                              <div class="user-status user-status-unverified" id="rol-info"></div>
+                              <div class="user-name dropdown-indicator" id="user-info"></div>
+                            </div>
+                          </div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                                <div class="user-card">
-                                    <div class="user-avatar">
-                                        <span>AB</span>
-                                    </div>
-                                    <div class="user-info">
-                                        <span class="lead-text" id="nombre-info"></span>
-                                    </div>
-                                </div>
+                          <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                            <div class="user-card">
+                              <div class="user-avatar">
+                                <span>AB</span>
+                              </div>
+                              <div class="user-info">
+                                <span class="lead-text" id="nombre-info"></span>
+                              </div>
                             </div>
-                            <div class="dropdown-inner">
-                                <ul class="link-list">                                                    
-                                    <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Modo Oscuro</span></a></li>
-                                </ul>
-                            </div>
-                            <div class="dropdown-inner">
-                                <ul class="link-list">
-                                    <li><a href="#" onclick="signOut()"><em class="icon ni ni-signout"></em><span>Salir</span></a></li>
-                                </ul>
-                            </div>
-                        </div>
-<<<<<<< HEAD
-                    </li>
-=======
-                        <div class="user-info d-none d-xl-block">
-                          <div class="user-status user-status-unverified" id="rol-info"></div>
-                          <div class="user-name dropdown-indicator" id="user-info"></div>
-                        </div>
-                      </div>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                      <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                        <div class="user-card">
-                          <div class="user-avatar">
-                            <span>AB</span>
                           </div>
-                          <div class="user-info">
-                            <span class="lead-text" id="nombre-info"></span>
+                          <div class="dropdown-inner">
+                            <ul class="link-list">
+                              <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Modo
+                                    Oscuro</span></a></li>
+                            </ul>
+                          </div>
+                          <div class="dropdown-inner">
+                            <ul class="link-list">
+                              <li><a href="#" onclick="signOut()"><em class="icon ni ni-signout"></em><span>Salir</span></a>
+                              </li>
+                            </ul>
                           </div>
                         </div>
-                      </div>
-                      <div class="dropdown-inner">
-                        <ul class="link-list">
-                          <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Modo
-                                Oscuro</span></a></li>
-                        </ul>
-                      </div>
-                      <div class="dropdown-inner">
-                        <ul class="link-list">
-                          <li><a href="#" onclick="signOut()"><em class="icon ni ni-signout"></em><span>Salir</span></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </li>
->>>>>>> 09f80238548ec5f26ed7ab74e148bac964b9eea8
-                </ul>
-            </div>
+                      </li>
+                    </ul>
+                  </div>
             </div><!-- .nk-header-wrap -->
           </div><!-- .container-fliud -->
         </div>
@@ -177,11 +134,9 @@
                         <table class="table">                          
                           <tbody id="pedidos">
                             <tr>
-                                <th>
-                                    <td>Id Pedido</td>
-                                    <td>Mesa</td>
-                                    <td>Id Mesero</td>
-                                </th>
+                                <th>Id Pedido</th>
+                                <th>Mesa</th>
+                                <th>Id Mesero</th>
                             </tr>
                           </tbody>
                         </table>
@@ -193,12 +148,50 @@
             </div>
           </div>
         </div>
+
+        <!-- *!  MODAL PARA VIZUALIZAR LOS PRODUCTOS DEL PEDIDO Y VERIFICARLO  -->
+
+        <div class="modal fade" tabindex="-1" id="modalDefault">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal-title">Verificacion de Pedido</h5>
+                        <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                            <em class="icon ni ni-cross"></em>
+                        </a>
+                    </div>
+                    <div class="modal-body">
+                        <div id="alert" role="alert">
+                        </div>
+                        <form action="#" onsubmit="return false;" class="form-validate is-alter">
+                            <!-- *! ID DE LA MESA  -->
+                            <div class="form-group">
+                                <label class="form-label" for="mesa">Mesa</label>
+                                <div class="form-control-wrap">
+                                    <input type="text" class="form-control" id="mesa" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group" id = "carrito">
+                                <!-- *! AQUI LLENAMOS EL CARRITO CON LOS PRODUCTOS QUE TIENE UN PEDIDO UWU -->
+                            </div>
+
+                            <div class = "row" style="justify-content: space-evenly;">
+                                <button type="button" id="btn-form" class="btn btn-lg btn-success">Aceptar</button>
+                                <button type="button" id="btn-form" class="btn btn-lg btn-danger">Denegar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- footer @s -->
         <div class="nk-footer">
           <div class="container-fluid">
             <div class="nk-footer-wrap">
               <div class="nk-footer-copyright"> &copy;
-                <script>document.write(new Date().getFullYear());</script> OrquiWeb.</a>
+                <script>document.write(new Date().getFullYear());</script> OrquiWeb.
               </div>
             </div>
           </div>
@@ -215,10 +208,7 @@
   <script src="./assets/js/bundle.js?ver=2.2.0"></script>
   <script src="./assets/js/scripts.js?ver=2.2.0"></script>
   <script src="./assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
-<<<<<<< HEAD
   <script src="./js/pedidos.js"></script>
-=======
->>>>>>> 09f80238548ec5f26ed7ab74e148bac964b9eea8
   <script src="./js/commons.js"></script>
 </body>
 
