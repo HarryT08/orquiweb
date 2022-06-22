@@ -126,7 +126,7 @@ router.patch('/producto/:id', (req, res) => {
 router.get('/reserva/:id', (req, res) => {
     const { id } = req.params;
     const { date } = req.query;
-    adminServices.getReserva(id, date, time, (result) => {
+    adminServices.getReserva(id, date, (result) => {
         res.json(result);
     });
 });
