@@ -1,5 +1,5 @@
 function redirectWithNoLogin() {
-    if (localStorage.getItem('user') === null) {
+    if (sessionStorage.getItem('user') === null) {
         window.location.href = './index.html';
     }
 }
