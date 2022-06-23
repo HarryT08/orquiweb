@@ -11,9 +11,8 @@ function loadData() {
             let tbody = document.getElementById('productos');
             data.forEach(producto => {
                 let tr = document.createElement('tr');
-                tr.className = 'tb-tnx-item';
                 tr.innerHTML = `
-                <td class="nk-tb-col">${producto.idProducto}</td>
+                <td>${producto.idProducto}</td>
                 <td>${producto.nombre}</td>
                 <td>${producto.costoUnidad}</td>
                 <td class="nk-tb-col nk-tb-col-tools">
