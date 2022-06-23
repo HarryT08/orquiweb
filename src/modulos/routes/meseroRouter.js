@@ -19,4 +19,18 @@ router.post('/detalleComanda', (req, res)=>{
     })
 });
 
+router.get('/rechazados/:id',(req, res) =>{
+    let {id} = req.params;
+    meseroServices.getRechazados(id, (result) => {
+        res.json(result);
+    })
+})
+
+router.get('/pedidosR/:id',(req, res) =>{
+    let {id} = req.params;
+    meseroServices.getPedidosRechazados(id, (result) => {
+        res.json(result);
+    })
+})
+
 module.exports = router;
