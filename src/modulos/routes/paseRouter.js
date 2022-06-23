@@ -13,10 +13,18 @@ router.get('/pedidos/:id' , (req , res) => {
     paseServices.getProductos(id, productos => res.json(productos) )
 })
 
-router.delete('/pedidos/:id' , (req , res) => {
+router.patch('/pedidos/:id' , (req , res) => {
     let { id } = req.params
-    paseServices.deletePedido( id , pedido => res.json(pedido) )
+    paseServices.updatePedido( id , pedido => res.json(pedido) )
 })
 
+router.patch('/productos/denegar' , (req , res) => {
+    paseServices.denegarProductos(req.body , pedido => res.json(pedido) )
+})
+
+router.patch('/pedidos/mensaje/:id' , (req, res) => {
+    const { id } = req.params
+    paseServices.denegarPedido(id , req.body, result => res.json(result))
+})
 
 module.exports = router

@@ -5,7 +5,7 @@ class PaseServices {
     constructor() {  }
 
     getPedidos(callback) {
-        let readQuery = 'SELECT * FROM comanda';
+        let readQuery = `SELECT * FROM comanda WHERE comanda.estado = 'Pendiente'`;
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(readQuery, function (err, result) {
@@ -28,11 +28,11 @@ class PaseServices {
         })
     }
 
-    deletePedido(id, callback){
-        let query = 'DELETE FROM comanda WHERE idComanda = ?';
+    updatePedido(id, callback){
+        let query = `UPDATE comanda SET estado = 'Aceptado' WHERE idComanda = ?`
         bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(query, [id], (err, result, fields) => {
+            connection.query(query, [id], (err, result) => {
                 if (err) throw err;
                 callback(result);
                 connection.release();
@@ -40,11 +40,36 @@ class PaseServices {
         })
     }
 
+    denegarProductos(data, callback){
+        let query = `UPDATE detallecomanda SET estado = 'Rechazado' WHERE idComanda = ? AND idProducto = ?`
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(query, [data.idComanda , data.idProducto], (err, result) => {
+                if (err) throw err;
+                callback(result);
+                connection.release();
+            })
+        })
+    }    
+
+    denegarPedido(idComanda , mensaje , callback){
+        let query = `UPDATE comanda SET mensaje = ?, estado = 'Rechazado'  WHERE idComanda = ?`
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(query, [mensaje.mensaje , idComanda], (err, result) => {
+                if (err) throw err;
+                callback(result);
+                connection.release();
+            })
+        })
+    }
+
+
     getProductos(idComanda, callback){
         let query = 'SELECT p.nombre, p.idProducto, dc.cantidad, dc.idComanda, c.idMesa FROM producto p JOIN detallecomanda dc ON p.idProducto = dc.idProducto JOIN comanda c ON c.idComanda = dc.idComanda AND dc.idComanda = ?' 
         bd.getConnection(function (err, connection) {
             if (err) throw err;
-            connection.query(query, [idComanda], (err, result, fields) => {
+            connection.query(query, [idComanda], (err, result) => {
                 if (err) throw err;
                 callback(result);
                 connection.release();
