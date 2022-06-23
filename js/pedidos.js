@@ -17,12 +17,11 @@ function loadData() {
       pedido = data.length;
       data.forEach((pedido) => {
         let tr = document.createElement("tr");
-        tr.className = "tb-tnx-item";
         tr.innerHTML = `
                 <td>${pedido.idComanda}</td>
                 <td>Mesa #${pedido.idMesa}</td>
                 <td>${pedido.idUsuario}</td>
-                <td class="nk-tb-col nk-tb-col-tools">
+                <td>
                     <ul class="nk-tb-actions gx-1">
                         <li>
                             <div class="drodown">

@@ -11,13 +11,12 @@ function loadData() {
             let tbody = document.getElementById('mesas');
             data.forEach(mesa => {
                 let tr = document.createElement('tr');
-                tr.className = 'tb-tnx-item';
                 tr.innerHTML = `
-                <td class="nk-tb-col">${mesa.idMesa}</td>
+                <td>${mesa.idMesa}</td>
                 <td>
                 ${estado(mesa.estado)}                    
                 </td>
-                <td class="nk-tb-col nk-tb-col-tools">
+                <td>
                     <a onclick="eliminar(${mesa.idMesa})" style="cursor:pointer;"><em class="icon ni ni-trash" ></em><span>Eliminar</span></a>
                 </td>
             `;
