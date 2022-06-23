@@ -10,7 +10,6 @@ function loadData() {
             let tbody = document.getElementById('productos');
             data.forEach(producto => {
                 let tr = document.createElement('tr');
-                tr.className = 'tb-tnx-item';
                 tr.innerHTML = `
                 <td>${producto.nombre}</td>
                 <td>${producto.costoUnidad}</td>
@@ -25,6 +24,11 @@ function loadData() {
     document.getElementById('alert-carrito').style.display = 'none';
 }
 
+function volver(){
+    localStorage.clear();
+    window.location.href = './views/home_mesero.html'
+}
+
 function agregarCarrito(id) {
     $.ajax({
         type: 'GET',
@@ -33,6 +37,7 @@ function agregarCarrito(id) {
         cache: false,
         success: function (data) {
             guardarLocalStorage(data);
+            getTotal();
             pintarCarrito();
         }
     });
@@ -57,15 +62,29 @@ function pintarCarrito() {
     });
 }
 
+function getTotal(){
+    let pedidos = getLocalStorage();
+    let total = 0;
+    pedidos.forEach(pedido => {
+        total += pedido.cantidad * pedido.costoUnidad;
+    });
+    if(total === 0){
+        localStorage.removeItem('total');
+    }else{
+        localStorage.setItem('total',total);
+    }
+}
+
 function getMore(idProducto) {
     let pedidos = getLocalStorage();
     pedidos.forEach(pedido => {
         if (pedido.idProducto === idProducto) {
             pedido.cantidad += 1;
             localStorage.setItem('carrito', JSON.stringify(pedidos));
+            getTotal();
+            pintarCarrito();
         }
-    });
-    pintarCarrito();
+    });    
 }
 
 function getLess(idProducto) {
@@ -78,9 +97,10 @@ function getLess(idProducto) {
             }            
             localStorage.setItem('carrito', JSON.stringify(pedidos));
             vaciarCarrito();
+            getTotal();
+            pintarCarrito();
         }
     });
-    pintarCarrito();
 }
 
 function vaciarCarrito(){

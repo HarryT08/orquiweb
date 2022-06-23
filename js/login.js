@@ -1,34 +1,6 @@
 const API_URL = "http://localhost:3000";
 
-// const xhr = new XMLHttpRequest();
-
-// function onRequestHandler(){
-//     if (this.readyState === 4 && this.status === 200){
-//         const data = JSON.parse(this.response);
-//         const htmlresponse = document.querySelector('#app');
-//         const template = data.map(user => `<li>${user.username}</li>`);
-//         htmlresponse.innerHTML = `<ul>${template}</ul>`;
-//     }
-// }
-
-// xhr.addEventListener("load", onRequestHandler);
-// xhr.open('GET', 'http://localhost:3000/admin/user');
-// xhr.send();
-
-//Con esta se obtienen cosas de la API
-// function request() {
-//     $.ajax({
-//         type: 'GET',
-//         url: 'http://localhost:3000/admin/user',
-//         async: true,
-//         cache: false,
-//         success: function (data) {
-//             console.log(data);
-//         }
-//     });
-// }
-
-$('#form-login').on('submit', function(e){
+$('#form-login').on('submit', function(e){    
     //Prevenimos envio de formulario
     e.preventDefault();
     //Obtenemos los valores del formulario
@@ -50,6 +22,7 @@ $('#form-login').on('submit', function(e){
                 sessionStorage.setItem('user', result.username.toUpperCase());
                 sessionStorage.setItem('rol', result.rol.toUpperCase());
                 sessionStorage.setItem('nombre', result.nombre + " " + result.apellido);
+                sessionStorage.setItem('userId', result.idUsuario);
             }); 
         }else{
             response.json().then(function(result){
@@ -58,3 +31,5 @@ $('#form-login').on('submit', function(e){
         }
     })
 });
+
+localStorage.clear();

@@ -11,7 +11,6 @@ function loadData() {
             let tbody = document.getElementById('usuarios');
             data.forEach(user => {
                 let tr = document.createElement('tr');
-                tr.className = 'tb-tnx-item';
                 tr.innerHTML = `
                 <td>${user.idUsuario}</td>
                 <td>${user.username}</td>

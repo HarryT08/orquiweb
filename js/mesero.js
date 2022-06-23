@@ -21,6 +21,7 @@ function loadData() {
                     let id_mesa = `${data[i].idMesa}`;
                     const mesa = document.createElement("td");
                     const btnMesa = document.createElement("button");
+                    btnMesa.onclick = guardarId;
                     btnMesa.innerHTML = id_mesa;
                     btnMesa.id = id_mesa;
                     verifyTime(id_mesa, (result) => {
@@ -36,6 +37,12 @@ function loadData() {
             }
         }
     });
+}
+
+function guardarId(){
+    let id = this.id;
+    localStorage.setItem('mesa', id);
+    window.location.href = './views/realizarPedido.html';
 }
 
 function verifyTime(idMesa, callback) {

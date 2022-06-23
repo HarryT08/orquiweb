@@ -137,8 +137,8 @@
                 <!-- main header @e -->
                 <div class="nk-content ">
                     <div class="container-fluid">
-                        <div class="nk-content-inner">
-                            <div class="nk-content-body">
+                        <div class="nk-content-inner">                            
+                            <div class="nk-content-body">                                
                                 <div class="example-alert" id="alert-carrito">
                                     <div class="alert alert-danger alert-icon">
                                         <em class="icon ni ni-cross-circle"></em> <strong>Carrito vacio</strong>! Agregue al menos un producto</div>
@@ -146,10 +146,11 @@
                                 <div class="components-preview wide-md mx-auto">
                                     <div class="nk-block nk-block-lg">
                                         <div class="card card-preview">
-                                            <div class="card-inner">
+                                            <div class="card-inner table-responsive">                                                
                                                 <h4>
                                                     Carrito de productos
                                                     <button onclick="finalizar()" class="btn btn-dim btn-outline-success"> Finalizar pedido </button>
+                                                    <button onclick="volver()" class="btn btn-dim btn-danger">Volver</button>
                                                 </h4>                                                
                                                 <table class="table">
                                                     <thead>
@@ -161,14 +162,16 @@
                                                     <tbody id="carrito">
                                                     </tbody>
                                                 </table>
+                                                
                                             </div>
                                         </div><!-- .card-preview -->
                                     </div> <!-- nk-block -->
 
                                     <div class="nk-block nk-block-lg">
                                         <div class="card card-preview">
-                                            <div class="card-inner">
-                                                <h4>Productos</h4>                                                <table class="table">
+                                            <div class="card-inner table-responsive">
+                                                <h4>Productos</h4>
+                                                <table class="table">                                                
                                                     <thead>
                                                         <th>Nombre</th>
                                                         <th>Costo Unidad</th>
