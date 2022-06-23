@@ -151,7 +151,21 @@ router.delete('/reserva/:id', (req, res) => {
         res.status(200).json(result);
     })
 });
+/**
+ * ---------------------------------------------------RUTAS PARA COMANDA-------------------------------------------
+**/
 
+router.post('/comanda', (req, res)=>{
+    adminServices.createComanda(req.body, (result) => {
+        res.json(result);
+    })
+});
+
+router.post('/detalleComanda', (req, res)=>{
+    adminServices.createDetalle(req.body, (result) => {
+        res.json(result);
+    })
+});
 
 /**
  * ---------------------------------------------------OTRAS RUTAS-------------------------------------------
