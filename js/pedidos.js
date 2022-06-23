@@ -1,5 +1,8 @@
 const API_URL = "http://localhost:3000";
 document.addEventListener("DOMContentLoaded", loadData());
+const music = new Audio('./assets/voice/ding.mp3');
+let pedido = 0;
+let pedidoAnt = 0;
 
 function loadData() {
   $.ajax({
@@ -9,6 +12,9 @@ function loadData() {
     cache: false,
     success: function (data) {
       let tbody = document.getElementById("pedidos");
+      tbody.innerHTML = '';
+      pedidoAnt = pedido;
+      pedido = data.length;
       data.forEach((pedido) => {
         let tr = document.createElement("tr");
         tr.className = "tb-tnx-item";
@@ -34,8 +40,12 @@ function loadData() {
             `;
         tbody.appendChild(tr);
       });
+      if(pedidoAnt != pedido){
+        music.play();
+      }
+      setTimeout(loadData, 60000);
     },
-  });
+  })
 }
 
 function eliminar(id) {
@@ -100,12 +110,12 @@ function denegarPedido(idComanda) {
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
     confirmButtonText: "Confirmar!",
-  }).then( async () => {
+  }).then(async () => {
     const checks = document.querySelectorAll(".valores");
     const comentario = document.getElementById("comentario");
-    checks.forEach( async (idProducto) => {
+    checks.forEach(async (idProducto) => {
       if (idProducto.checked) {
-          await fetch(`${API_URL}/pase/productos/denegar`, {
+        await fetch(`${API_URL}/pase/productos/denegar`, {
           method: "PATCH",
           body: JSON.stringify({
             idComanda: idComanda,

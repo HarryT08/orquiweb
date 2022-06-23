@@ -16,7 +16,8 @@
   <link rel="stylesheet" href="./assets/css/dashlite.css?ver=2.2.0" />
   <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=2.2.0" />
   <!-- Jquery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
   <script src="./js/redirect.js"></script>
 </head>
 
@@ -73,47 +74,47 @@
         <div class="nk-header nk-header-fixed is-light">
           <div class="container-fluid">
             <div class="nk-header-wrap">
-                <div class="nk-header-tools">
-                    <ul class="nk-quick-nav">
-                      <li class="dropdown user-dropdown">
-                        <a href="#" class="dropdown-toggle mr-n1" data-toggle="dropdown">
-                          <div class="user-toggle">
-                            <div class="user-avatar sm">
-                              <em class="icon ni ni-user-alt"></em>
-                            </div>
-                            <div class="user-info d-none d-xl-block">
-                              <div class="user-status user-status-unverified" id="rol-info"></div>
-                              <div class="user-name dropdown-indicator" id="user-info"></div>
-                            </div>
+              <div class="nk-header-tools">
+                <ul class="nk-quick-nav">
+                  <li class="dropdown user-dropdown">
+                    <a href="#" class="dropdown-toggle mr-n1" data-toggle="dropdown">
+                      <div class="user-toggle">
+                        <div class="user-avatar sm">
+                          <em class="icon ni ni-user-alt"></em>
+                        </div>
+                        <div class="user-info d-none d-xl-block">
+                          <div class="user-status user-status-unverified" id="rol-info"></div>
+                          <div class="user-name dropdown-indicator" id="user-info"></div>
+                        </div>
+                      </div>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+                      <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                        <div class="user-card">
+                          <div class="user-avatar">
+                            <span>AB</span>
                           </div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                          <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                            <div class="user-card">
-                              <div class="user-avatar">
-                                <span>AB</span>
-                              </div>
-                              <div class="user-info">
-                                <span class="lead-text" id="nombre-info"></span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="dropdown-inner">
-                            <ul class="link-list">
-                              <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Modo
-                                    Oscuro</span></a></li>
-                            </ul>
-                          </div>
-                          <div class="dropdown-inner">
-                            <ul class="link-list">
-                              <li><a href="#" onclick="signOut()"><em class="icon ni ni-signout"></em><span>Salir</span></a>
-                              </li>
-                            </ul>
+                          <div class="user-info">
+                            <span class="lead-text" id="nombre-info"></span>
                           </div>
                         </div>
-                      </li>
-                    </ul>
-                  </div>
+                      </div>
+                      <div class="dropdown-inner">
+                        <ul class="link-list">
+                          <li><a class="dark-switch" href="#"><em class="icon ni ni-moon"></em><span>Modo
+                                Oscuro</span></a></li>
+                        </ul>
+                      </div>
+                      <div class="dropdown-inner">
+                        <ul class="link-list">
+                          <li><a href="#" onclick="signOut()"><em class="icon ni ni-signout"></em><span>Salir</span></a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div><!-- .nk-header-wrap -->
           </div><!-- .container-fliud -->
         </div>
@@ -131,13 +132,13 @@
                   <div class="nk-block nk-block-lg">
                     <div class="card card-preview">
                       <div class="card-inner">
-                        <table class="table">                          
+                        <table class="table">
+                          <thead>
+                            <th>Id Pedido</th>
+                            <th>Mesa</th>
+                            <th>Id Mesero</th>
+                          </thead>
                           <tbody id="pedidos">
-                            <tr>
-                                <th>Id Pedido</th>
-                                <th>Mesa</th>
-                                <th>Id Mesero</th>
-                            </tr>
                           </tbody>
                         </table>
                       </div>
@@ -152,39 +153,39 @@
         <!-- *!  MODAL PARA VIZUALIZAR LOS PRODUCTOS DEL PEDIDO Y VERIFICARLO  -->
 
         <div class="modal fade" tabindex="-1" id="modalDefault">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modal-title">Verificacion de Pedido</h5>
-                        <a href="#" class="close" data-dismiss="modal" aria-label="Close">
-                            <em class="icon ni ni-cross"></em>
-                        </a>
-                    </div>
-                    <div class="modal-body">
-                        <div id="alert" role="alert">
-                        </div>
-                        <form action="#" onsubmit="return false;" class="form-validate is-alter">
-                            <!-- *! ID DE LA MESA  -->
-                            <div class="form-group text-center">
-                                <label class="form-label" for="mesa" id = "mesa"></label>
-                            </div>
-
-                            <div class="form-group text-center">
-                              <label class="form-label" for="mesa">Selecciona los productos que no se encuentran en cocina</label>
-                            </div>
-
-                            <div class="container" id = "carrito">
-                                <!-- *! AQUI LLENAMOS EL CARRITO CON LOS PRODUCTOS QUE TIENE UN PEDIDO UWU -->
-                            </div>
-
-                            <div class = "row" style="justify-content: space-evenly;">
-                                <button type="button" id="aceptar" class="btn btn-lg btn-success">Aceptar</button>
-                                <button type="button" id="denegar" class="btn btn-lg btn-danger">Denegar</button>
-                            </div>
-                        </form>
-                    </div>
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modal-title">Verificacion de Pedido</h5>
+                <a href="#" class="close" data-dismiss="modal" aria-label="Close">
+                  <em class="icon ni ni-cross"></em>
+                </a>
+              </div>
+              <div class="modal-body">
+                <div id="alert" role="alert">
                 </div>
+                <form action="#" onsubmit="return false;" class="form-validate is-alter">
+                  <!-- *! ID DE LA MESA  -->
+                  <div class="form-group text-center">
+                    <label class="form-label" for="mesa" id="mesa"></label>
+                  </div>
+
+                  <div class="form-group text-center">
+                    <label class="form-label" for="mesa">Selecciona los productos que no se encuentran en cocina</label>
+                  </div>
+
+                  <div class="container" id="carrito">
+                    <!-- *! AQUI LLENAMOS EL CARRITO CON LOS PRODUCTOS QUE TIENE UN PEDIDO UWU -->
+                  </div>
+
+                  <div class="row" style="justify-content: space-evenly;">
+                    <button type="button" id="aceptar" class="btn btn-lg btn-success">Aceptar</button>
+                    <button type="button" id="denegar" class="btn btn-lg btn-danger">Denegar</button>
+                  </div>
+                </form>
+              </div>
             </div>
+          </div>
         </div>
 
         <!-- footer @s -->
