@@ -13,7 +13,7 @@ function loadData() {
         fecha,
         estado: 'Pendiente'
     }
-    fetch(`${API_URL}/admin/comanda`, {
+    fetch(`${API_URL}/mesero/comanda`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -29,7 +29,7 @@ function loadData() {
                     cantidad: pedido.cantidad,
                     totalProducto: (pedido.cantidad * pedido.costoUnidad)
                 }                
-                fetch(`${API_URL}/admin/detalleComanda`, {
+                fetch(`${API_URL}/mesero/detalleComanda`, {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
