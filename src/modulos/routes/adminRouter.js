@@ -92,6 +92,12 @@ router.post('/mesa/:id', (req, res) => {
     });
 });
 
+router.post('/mesa', (req, res) => {
+    adminServices.createMesa(req.body, result => {
+        res.json(result);
+    })
+})
+
 /**
  * ---------------------------------------------------RUTAS PARA ADMINISTRAR PRODUCTOS-------------------------------------------
 **/
