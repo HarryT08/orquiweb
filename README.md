@@ -72,17 +72,21 @@ software necesario para el correcto funcionamiento de la pagina.
 ```
 1) Instalar Mysql y node.js.
 2) Abrir el proyecto en el IDE de su preferencia (Se recomienda Visual Studio Code).
-3) En caso de errores instalar las dependencias y hacer npm init en el terminal.
-4) Ejecutar en el terminal "npm run dev" para correr la pagina en el servidor local.
-5) En su navegador determinado escriba "localhost:3500" pues el puerto  por defecto es el 3500.
+3) En caso de errores, instalar las dependencias y hacer npm init en el terminal.
+4) Ejecutar en el terminal "npm run start" para correr la pagina en el servidor local.
+5) En su navegador determinado escriba "localhost:3000" pues el puerto  por defecto es el 3000.
 6) En caso de solo querer acceder a la web, acceder en la demo.
-7) Para poder ver la vista del administrador dese el mismo login ingresa el correo: admin@admin.com y
-contraseña: admin.
+7) Para poder ver la vista del administrador desde el mismo login ingresa el usuario: admin y
+contraseña: 1234.
+8) Para poder ver la vista del pase desde el mismo login ingresa el usuario: pase y
+contraseña: 1234
+9) Para poder ver la vista del mesero desde el mismo login ingresa el usuario: mesero y
+contraseña: 1234
 ```
 
 ------------------------------------------
 #### Demo 📲
-https://orquiweb.netlify.app/.
+https://orquiweb.netlify.app/
 ------------------------------------------
 #### Autores ✒️
 Proyecto desarrollado por:
