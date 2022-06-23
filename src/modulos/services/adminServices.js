@@ -270,6 +270,42 @@ class AdminServices {
             })
         })
     }
+
+    countReserva(fecha, callback){
+        let query = `SELECT * FROM reserva WHERE fecha = ?`;
+        bd.getConnection(function(err, connection){
+            if(err) throw err;
+            connection.query(query, [fecha], function(err,result){
+                if(err) throw err;
+                connection.release();
+                callback(result.length);
+            })
+        })
+    }
+
+    countComanda(fecha, callback){
+        let query = `SELECT * FROM comanda WHERE fecha = ?`;
+        bd.getConnection(function(err, connection){
+            if(err) throw err;
+            connection.query(query, [fecha], function(err,result){
+                if(err) throw err;
+                connection.release();
+                callback(result.length);
+            })
+        })
+    }
+
+    getLast(callback){
+        let query = `SELECT * FROM comanda ORDER BY idComanda DESC LIMIT 4`;
+        bd.getConnection(function(err, connection){
+            if(err) throw err;
+            connection.query(query, function(err,result){
+                if(err) throw err;
+                connection.release();                
+                callback(result);
+            })
+        })
+    }
 }
 
 module.exports = AdminServices;

@@ -165,22 +165,34 @@ router.delete('/reserva/:id', (req, res) => {
     })
 });
 
+router.get('/reservaCount', (req, res) => {
+    let {fecha} = req.query;
+    adminServices.countReserva(fecha, result => {
+        res.json(result);
+    });
+})
+
 /**
  * ---------------------------------------------------OTRAS RUTAS-------------------------------------------
 **/
-
-router.get('/estadistica', (req, res) => {
-    res.render('estadisticas');
-});
-
-router.get('/reserva', (req, res) => {
-    res.render('reservas');
-});
 
 router.get('/facturar/:id', (req, res) => {
     let {id} = req.params;
     adminServices.getFactura(id,(result)=>{
         res.json(result);        
+    })
+});
+
+router.get('/comandaCount', (req, res) => {
+    let {fecha} = req.query;
+    adminServices.countComanda(fecha, result => {
+        res.json(result);
+    });
+})
+
+router.get('/comandaLast', (req, res) => {
+    adminServices.getLast(result => {
+        res.json(result);
     })
 });
 
