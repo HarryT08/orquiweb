@@ -85,22 +85,6 @@ function eliminar(id) {
   });
 }
 
-function aceptarPedido(idComanda) {
-    fetch(`${API_URL}/pase/pedidos/${idComanda}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then( async () => {
-        await fetch(`${API_URL}/pase/pedidos/mesas/${idComanda}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-    }).then(() => window.location.href = "./views/home_pase.html");
-}
-
 function denegarPedido(idComanda) {
   Swal.fire({
     title: "Estás seguro?",
@@ -179,4 +163,20 @@ function modalVerification(idComanda) {
   document.getElementById("denegar").onclick = () => {
     denegarPedido(idComanda);
   };
+}
+
+function aceptarPedido(idComanda) {
+    fetch(`${API_URL}/pase/pedidos/${idComanda}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    }).then( async () => {
+        await fetch(`${API_URL}/pase/pedidos/mesas/${idComanda}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+    }).then(() => window.location.href = "./views/home_pase.html");
 }
