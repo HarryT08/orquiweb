@@ -29,11 +29,16 @@ class UserServices {
                 if (result.length > 0) {
                     bcrypt.compare(password, result[0].password, (err, coinciden) => {
                         if (coinciden) {
+                            console.log(result[0]);
                             callback(result[0]);
                         }
+                        else {
+                            callback(null);
+                        }
                     });
-                } 
-                callback(null);
+                } else {
+                    callback(null);
+                }
 
             })
         });
