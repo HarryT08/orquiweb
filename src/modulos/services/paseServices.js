@@ -41,7 +41,7 @@ class PaseServices {
     }
 
     getProductos(idComanda, callback){
-        let query = 'SELECT p.nombre, p.idProducto, dc.idComanda FROM producto p JOIN detallecomanda dc ON p.idProducto = dc.idProducto AND dc.idComanda = ?' 
+        let query = 'SELECT p.nombre, p.idProducto, dc.cantidad, dc.idComanda, c.idMesa FROM producto p JOIN detallecomanda dc ON p.idProducto = dc.idProducto JOIN comanda c ON c.idComanda = dc.idComanda AND dc.idComanda = ?' 
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(query, [idComanda], (err, result, fields) => {
