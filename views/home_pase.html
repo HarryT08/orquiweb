@@ -4,16 +4,18 @@
 <head>
   <base href="../" />
   <meta charset="utf-8" />
+  <meta name="author" content="Softnio" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description"
     content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers." />
   <!-- Fav Icon  -->
   <link rel="shortcut icon" href="./images/favicon.png" />
   <!-- Page Title  -->
-  <title>Pase</title>
+  <title>Mesero</title>
   <!-- StyleSheets  -->
   <link rel="stylesheet" href="./assets/css/dashlite.css?ver=2.2.0" />
   <link id="skin-default" rel="stylesheet" href="./assets/css/theme.css?ver=2.2.0" />
+  <link rel="stylesheet" href="./assets/css/prueba.css">
   <!-- Jquery -->
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
@@ -28,11 +30,13 @@
       <div class="nk-sidebar nk-sidebar-fixed is-light" data-content="sidebarMenu">
         <div class="nk-sidebar-element nk-sidebar-head">
           <div class="nk-sidebar-brand">
-            <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo" />
-            <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x"
-              alt="logo-dark" />
-            <img class="logo-small logo-img logo-img-small" src="./images/logo-small.png"
-              srcset="./images/logo-small2x.png 2x" alt="logo-small" />
+            <a href="./view/home_mesero" class="logo-link nk-sidebar-logo">
+              <img class="logo-light logo-img" src="./images/logo.png" srcset="./images/logo2x.png 2x" alt="logo" />
+              <img class="logo-dark logo-img" src="./images/logo-dark.png" srcset="./images/logo-dark2x.png 2x"
+                alt="logo-dark" />
+              <img class="logo-small logo-img logo-img-small" src="./images/logo-small.png"
+                srcset="./images/logo-small2x.png 2x" alt="logo-small" />
+            </a>
           </div>
           <div class="nk-menu-trigger mr-n2">
             <a href="#" class="nk-nav-toggle nk-quick-nav-icon d-xl-none" data-target="sidebarMenu"><em
@@ -51,8 +55,7 @@
                   <a href="./views/home_pase" class="nk-menu-link">
                     <span class="nk-menu-icon"><em class="icon ni ni-bag"></em></span>
                     <span class="nk-menu-text">
-                      Ver Pedidos
-                    </span>
+                      Ver pedidos
                   </a>
                 </li>
                 <!-- .nk-menu-item -->
@@ -72,6 +75,17 @@
         <div class="nk-header nk-header-fixed is-light">
           <div class="container-fluid">
             <div class="nk-header-wrap">
+              <div class="nk-menu-trigger d-xl-none ml-n1">
+                <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em
+                    class="icon ni ni-menu"></em></a>
+              </div>
+              <div class="nk-header-brand d-xl-none">
+                <a href="../index" class="logo-link">
+                  <img class="logo-light logo-img" src="/images/logo.png" srcset="./images/logo2x.png 2x" alt="logo">
+                  <img class="logo-dark logo-img" src="/images/logo-dark.png" srcset="./images/logo-dark2x.png 2x"
+                    alt="logo-dark">
+                </a>
+              </div><!-- .nk-header-brand -->
               <div class="nk-header-tools">
                 <ul class="nk-quick-nav">
                   <li class="dropdown user-dropdown">
@@ -191,7 +205,7 @@
           <div class="container-fluid">
             <div class="nk-footer-wrap">
               <div class="nk-footer-copyright"> &copy;
-                <script>document.write(new Date().getFullYear());</script> OrquiWeb.
+                <script>document.write(new Date().getFullYear());</script> OrquiWeb.</a>
               </div>
             </div>
           </div>
@@ -204,12 +218,11 @@
   </div>
   <!-- app-root @e -->
   <!-- JavaScript -->
-  <!-- <script src="./assets/js/prueba.js"></script> -->
   <script src="./assets/js/bundle.js?ver=2.2.0"></script>
   <script src="./assets/js/scripts.js?ver=2.2.0"></script>
   <script src="./assets/js/charts/chart-ecommerce.js?ver=2.2.0"></script>
-  <script src="./js/pedidos.js"></script>
   <script src="./js/commons.js"></script>
+  <script src="./js/pedidos.js"></script>
 </body>
 
 </html>

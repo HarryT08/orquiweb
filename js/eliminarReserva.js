@@ -28,7 +28,6 @@ function loadData() {
         const table = document.getElementById("reservas");
         data.forEach(reserva => {
           let tr = document.createElement('tr');
-          tr.className = 'tb-tnx-item';
           tr.innerHTML = `
                 <td>${reserva.idMesa}</td>
                 <td>${reserva.nombreCliente}</td>

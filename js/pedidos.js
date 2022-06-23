@@ -22,66 +22,17 @@ function loadData() {
                 <td>Mesa #${pedido.idMesa}</td>
                 <td>${pedido.idUsuario}</td>
                 <td>
-                    <ul class="nk-tb-actions gx-1">
-                        <li>
-                            <div class="drodown">
-                                <a href="#" class="dropdown-toggle btn btn-icon btn-trigger" data-toggle="dropdown"><em class="icon ni ni-more-h"></em></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <ul class="link-list-opt no-bdr">
-                                            <li><a onclick="modalVerification(${pedido.idComanda})" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-edit"></em><span>Verificar</span></a></li>
-                                            <li><a onclick="eliminar(${pedido.idComanda})" style="cursor:pointer;" ><em class="icon ni ni-trash"></em><span>Eliminar</span></a></li>
-                                        </ul>
-                                    </div>
-                            </div>
-                        </li>
-                    </ul>
+                    <a onclick="modalVerification(${pedido.idComanda})" data-toggle="modal" data-target="#modalDefault"><em class="icon ni ni-edit"></em><span>Verificar</span></a>
                 </td>
             `;
         tbody.appendChild(tr);
       });
-      if(pedidoAnt != pedido){
+      if (pedidoAnt != pedido) {
         music.play();
       }
       setTimeout(loadData, 30000);
     },
   })
-}
-
-function eliminar(id) {
-  Swal.fire({
-    title: "Estás seguro?",
-    text: "Al eliminar no podrás revertirlo!",
-    icon: "warning",
-    showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Confirmar!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      $.ajax({
-        type: "DELETE",
-        url: `${API_URL}/pase/pedidos/${id}`,
-        async: true,
-        cache: false,
-      })
-        .done(function () {
-          Swal.fire({
-            title: "Borrado!",
-            text: "El pedido ha sido eliminado.",
-            icon: "success",
-          }).then(() => {
-            window.location.href = "./views/home_pase";
-          });
-        })
-        .fail(function () {
-          Swal.fire({
-            title: "No se ha podido eliminar",
-            text: "Ha ocurrido un error",
-            icon: "error",
-          });
-        });
-    }
-  });
 }
 
 function denegarPedido(idComanda) {
@@ -155,6 +106,7 @@ function modalVerification(idComanda) {
       modalBody.appendChild(commentSection);
     },
   });
+  
   document.getElementById("aceptar").onclick = () => {
     aceptarPedido(idComanda);
   };
@@ -165,17 +117,17 @@ function modalVerification(idComanda) {
 }
 
 function aceptarPedido(idComanda) {
-    fetch(`${API_URL}/pase/pedidos/${idComanda}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then( async () => {
-        await fetch(`${API_URL}/pase/pedidos/mesas/${idComanda}`, {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        })
-    }).then(() => window.location.href = "./views/home_pase");
+  fetch(`${API_URL}/pase/pedidos/${idComanda}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(async () => {
+    await fetch(`${API_URL}/pase/pedidos/mesas/${idComanda}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+  }).then(() => window.location.href = "./views/home_pase");
 }
