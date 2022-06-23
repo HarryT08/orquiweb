@@ -33,6 +33,8 @@ $('#form-login').on('submit', function (e) {
                 });
             }
         })
+    }else{
+        document.getElementById('error').innerHTML = 'CAMPOS VACIOS';
     }
 });
 
