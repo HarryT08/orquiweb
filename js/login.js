@@ -6,7 +6,7 @@ $('#form-login').on('submit', function (e) {
     //Obtenemos los valores del formulario
     let username = document.getElementById('username').value;
     let password = document.getElementById('password').value;
-    if (username && password) {
+    if (username != '' && password != '') {
         var data = {
             username: username,
             password: password
