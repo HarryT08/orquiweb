@@ -26,14 +26,15 @@ class UserServices {
             connection.query(readQuery, [username], (err, result) => {
                 if (err) throw err;
                 connection.release();
-                bcrypt.compare(password, result[0].password, (err, coinciden) => {
-                    if (coinciden) {
-                        callback(result[0]);
-                    }
-                    else {
-                        callback(null);
-                    }
-                });
+                if (result.length > 0) {
+                    bcrypt.compare(password, result[0].password, (err, coinciden) => {
+                        if (coinciden) {
+                            callback(result[0]);
+                        }
+                    });
+                } 
+                callback(null);
+
             })
         });
     }

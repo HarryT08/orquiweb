@@ -21,7 +21,9 @@ router.post("/", (req, res) => {
       password
     );
   } else {
-    res.render(page_render, { msg: "USUARIO Y/O CONTRASEÑA INCORRECTAS" });
+    res.status(404).json({
+      msg: "USUARIO Y/O CONTRASEÑA INCORRECTAS",
+    });
   }
 });
 
