@@ -75,7 +75,7 @@ function eliminar(id) {
 }
 
 
-function modalVerification( idComanda , idMesa ) {
+function modalVerification( idComanda ) {
     $.ajax({
         type: 'GET',
         url: `${API_URL}/pase/pedidos/${idComanda}`,
@@ -86,13 +86,30 @@ function modalVerification( idComanda , idMesa ) {
             // TODO: ARREGLAR EL VISUALIZAR PORQUE ACUMULA PRODUCTOS 
             // const mesa = document.getElementById('mesa').innerHTML = 
             let modalBody = document.getElementById('carrito');
+            console.log();
+            document.getElementById('mesa').innerHTML = `<h3> Mesa # ${productos[0].idMesa}</h3>`
+            modalBody.innerHTML = ""
             productos.forEach( producto => {
                 let div = document.createElement('div');
                 div.innerHTML =
-                    `<input type="checkbox" value = "${producto.idProducto}" class="valores">
-                                              <label>${producto.nombre}</label>`;
+                    `<input type = "checkbox" value = "${producto.idProducto} class = "valores">
+                     <label class="form-label" > 
+                        <span class = "badge"> Cantidad : ${producto.cantidad} </span>
+                        <span class = "badge">${producto.nombre} </span>
+                    </label>
+                    `;
+                div.classList.add("form-control")
+                div.style.marginBottom = "2%"
                 modalBody.appendChild(div);
             });
+            const commentSection = document.createElement('div');
+            commentSection.classList.add("container-fluid")
+            commentSection.innerHTML = `
+                <label for="comentario" class="form-label">Comentarios</label>
+                <textarea class="form-control" id="comentario" rows="3"></textarea>
+            `
+            commentSection.style.marginBottom = "2%"
+            modalBody.appendChild(commentSection)
         }
     })
 }

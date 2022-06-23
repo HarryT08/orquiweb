@@ -90,10 +90,10 @@ function loadSelectHour(selected) {
   let select = document.getElementById('hora');
   for (var i = 17; i < 24; i++) {
     let valor = i + ':00';
-    if (!selected.includes(valor)) {      
+    if (!selected.includes(valor)) {
       let option = document.createElement('option');
       option.value = valor;
-      option.text = valor+' PM';
+      option.text = valor + ' PM';
       select.appendChild(option);
     }
   }
