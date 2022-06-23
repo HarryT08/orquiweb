@@ -18,6 +18,11 @@ router.patch('/pedidos/:id' , (req , res) => {
     paseServices.updatePedido( id , pedido => res.json(pedido) )
 })
 
+router.patch('/pedidos/mesas/:id' , (req, res) =>{
+    let { id } = req.params
+    paseServices.updateMesa(id, (result) => res.json(result))
+} )
+
 router.patch('/productos/denegar' , (req , res) => {
     paseServices.denegarProductos(req.body , pedido => res.json(pedido) )
 })
