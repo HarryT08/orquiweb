@@ -69,7 +69,7 @@ function eliminarReserva(id) {
           text: 'La reserva ha sido eliminada.',
           icon: 'success'
         }).then(() => {
-          window.location.href = "./views/eliminarReserva.html";
+          window.location.href = "./views/eliminarReserva";
         });
       }).fail(function () {
         Swal.fire({

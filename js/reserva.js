@@ -141,7 +141,7 @@ function realizarReserva() {
         text: 'La reserva ha sido registrada exitosamente.',
         icon: 'success'
       }).then((willDelete) => {
-        window.location.href = "./views/reserva.html";
+        window.location.href = "./views/reserva";
       });
     })
   }

@@ -18,7 +18,7 @@ $('#form-login').on('submit', function(e){
     }).then(function(response){
         if(response.ok){
             response.json().then(function(result){
-                window.location.href = `./views/home_${result.rol}.html`;
+                window.location.href = `./views/home_${result.rol}`;
                 sessionStorage.setItem('user', result.username.toUpperCase());
                 sessionStorage.setItem('rol', result.rol.toUpperCase());
                 sessionStorage.setItem('nombre', result.nombre + " " + result.apellido);

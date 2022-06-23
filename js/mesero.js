@@ -42,7 +42,7 @@ function loadData() {
 function guardarId(){
     let id = this.id;
     localStorage.setItem('mesa', id);
-    window.location.href = './views/realizarPedido.html';
+    window.location.href = './views/realizarPedido';
 }
 
 function verifyTime(idMesa, callback) {

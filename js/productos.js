@@ -89,7 +89,7 @@ function enviarFormUpdate() {
                 text: 'El producto ha sido actualizado exitosamente.',
                 icon: 'success'
             }).then((willDelete) => {
-                window.location.href = "./views/productos.html";
+                window.location.href = "./views/productos";
             });
         })
     }
@@ -120,7 +120,7 @@ function eliminar(id) {
                     text: 'El producto ha sido eliminado.',
                     icon: 'success'
                 }).then(() => {
-                    window.location.href = "./views/productos.html";
+                    window.location.href = "./views/productos";
                 });
             }).fail(function () {
                 Swal.fire({
@@ -175,7 +175,7 @@ function enviarFormCrear() {
                     text: 'El producto ha sido registrado exitosamente.',
                     icon: 'success'
                 }).then((willDelete) => {
-                    window.location.href = "./views/productos.html";
+                    window.location.href = "./views/productos";
                 });
             } else {
                 let div = document.getElementById('alert');

@@ -39,7 +39,7 @@ function loadData() {
 
 function realizarFactura() {
     localStorage.setItem('idMesa', this.id);
-    window.location.href = './views/factura.html';
+    window.location.href = './views/factura';
 }
 
 document.addEventListener("DOMContentLoaded", loadData());

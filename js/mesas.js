@@ -62,7 +62,7 @@ function eliminar(id) {
                     text: 'La mesa ha sido eliminada.',
                     icon: 'success'
                 }).then((willDelete) => {
-                    window.location.href = "./views/mesas.html";
+                    window.location.href = "./views/mesas";
                 });
             }).fail(function () {
                 Swal.fire({
@@ -102,7 +102,7 @@ function enviarForm() {
                     text: 'La mesa ha sido registrada exitosamente.',
                     icon: 'success'
                 }).then((willDelete) => {
-                    window.location.href = "./views/mesas.html";
+                    window.location.href = "./views/mesas";
                 });
             } else {
                 let div = document.getElementById('alert');

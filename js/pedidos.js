@@ -71,7 +71,7 @@ function eliminar(id) {
             text: "El pedido ha sido eliminado.",
             icon: "success",
           }).then(() => {
-            window.location.href = "./views/home_pase.html";
+            window.location.href = "./views/home_pase";
           });
         })
         .fail(function () {
@@ -118,7 +118,7 @@ function denegarPedido(idComanda) {
         "Content-Type": "application/json",
       },
     });
-    window.location.href = "./views/home_pase.html";
+    window.location.href = "./views/home_pase";
   })
 }
 
@@ -178,5 +178,5 @@ function aceptarPedido(idComanda) {
                 "Content-Type": "application/json",
             },
         })
-    }).then(() => window.location.href = "./views/home_pase.html");
+    }).then(() => window.location.href = "./views/home_pase");
 }

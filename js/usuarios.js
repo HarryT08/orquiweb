@@ -61,7 +61,7 @@ function eliminar(id) {
                     text: 'El usuario ha sido eliminado.',
                     icon: 'success'
                 }).then(() => {
-                    window.location.href = "./views/usuarios.html";
+                    window.location.href = "./views/usuarios";
                 });
             }).fail(function () {
                 Swal.fire({
@@ -123,7 +123,7 @@ function enviarFormCrear() {
                     text: 'El usuario ha sido registrado exitosamente.',
                     icon: 'success'
                 }).then((willDelete) => {
-                    window.location.href = "./views/usuarios.html";
+                    window.location.href = "./views/usuarios";
                 });
             } else {
                 response.json().then(function (result) {
@@ -205,7 +205,7 @@ function enviarFormUpdate() {
                 text: 'El usuario ha sido actualizado exitosamente.',
                 icon: 'success'
             }).then((willDelete) => {
-                window.location.href = "./views/usuarios.html";
+                window.location.href = "./views/usuarios";
             });
         })
     }

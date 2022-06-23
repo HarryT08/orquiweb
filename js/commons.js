@@ -6,7 +6,7 @@ function setLogin() {
 
 function signOut(){
     sessionStorage.clear();
-    window.location.href = './index.html';
+    window.location.href = './index';
 }
 
 document.addEventListener("DOMContentLoaded", setLogin());

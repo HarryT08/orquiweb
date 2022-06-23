@@ -70,6 +70,6 @@ function formatDate(date) {
 
 function cleanAllBack(){
     localStorage.clear();
-    window.location.href = './views/home_mesero.html';
+    window.location.href = './views/home_mesero';
 }
 addEventListener('DOMContentLoaded', loadData);

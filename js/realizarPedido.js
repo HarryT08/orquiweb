@@ -26,7 +26,7 @@ function loadData() {
 
 function volver(){
     localStorage.clear();
-    window.location.href = './views/home_mesero.html'
+    window.location.href = './views/home_mesero'
 }
 
 function agregarCarrito(id) {
@@ -141,7 +141,7 @@ function getLocalStorage() {
 function finalizar(){
     let pedidos = getLocalStorage();
     if(pedidos.length > 0){
-        window.location.href = './views/finalizarPedido.html';
+        window.location.href = './views/finalizarPedido';
     }else{
         document.getElementById('alert-carrito').style.display = '';
     }
