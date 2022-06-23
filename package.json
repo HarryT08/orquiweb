@@ -4,7 +4,7 @@
   "description": "Proyecto enfocado a la optimizacion y automatizacion de procesos de un restaurante",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.js"
+    "start": "nodemon ./src/index.js"
   },
   "author": "",
   "license": "ISC",
