@@ -81,7 +81,14 @@ function aceptarPedido(idComanda) {
         headers: {
             "Content-Type": "application/json",
         },
-    }).then( () => window.location.href = "./views/home_pase.html" );
+    }).then( async () => {
+        await fetch(`${API_URL}/pase/pedidos/mesas/${idComanda}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+    }).then(() => window.location.href = "./views/home_pase.html");
 }
 
 function denegarPedido(idComanda) {
