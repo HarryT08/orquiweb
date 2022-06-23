@@ -43,7 +43,7 @@ function loadData() {
       if(pedidoAnt != pedido){
         music.play();
       }
-      setTimeout(loadData, 60000);
+      setTimeout(loadData, 30000);
     },
   })
 }
