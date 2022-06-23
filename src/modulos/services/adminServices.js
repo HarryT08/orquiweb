@@ -113,6 +113,18 @@ class AdminServices {
         });
     }
 
+    updateMesa(id, callback){
+        let query = `UPDATE mesa SET estado = 'disponible' WHERE idMesa = ?`;
+        bd.getConnection(function (err, connection) {
+            if(err) throw err;
+            connection.query(query, [id], (err, result) => {
+                if (err) throw err;
+                connection.release();
+                callback(result);
+            })
+        })
+    }
+
     deleteMesa(callback, id) {
         let query = 'DELETE FROM mesa WHERE idMesa = ?';
         bd.getConnection(function (err, connection) {
@@ -243,7 +255,21 @@ class AdminServices {
                 callback(result);
             })
         })
-    }    
+    }
+
+    getFactura(idMesa, callback) {
+        let query = `SELECT * FROM comanda c JOIN detallecomanda d 
+        ON c.idComanda = d.idComanda JOIN producto p ON d.idProducto = p.idProducto
+        WHERE c.estado = 'Aceptado' AND c.idMesa = ?`;
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(query, [idMesa], function (err, result) {
+                if (err) throw err;
+                connection.release();
+                callback(result);
+            })
+        })
+    }
 }
 
 module.exports = AdminServices;

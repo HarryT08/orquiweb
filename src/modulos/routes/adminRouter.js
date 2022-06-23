@@ -65,6 +65,12 @@ router.get('/mesa/reservada', (req, res) => {
     })
 });
 
+router.get('/mesa/ocupado', (req, res) => {
+    adminServices.getMesasByEstado('Ocupado', (mesas) => {
+        res.json(mesas);
+    })
+});
+
 router.delete('/mesa/:id', (req, res) => {
     const { id } = req.params;
     adminServices.deleteMesa((result) => {
@@ -78,6 +84,13 @@ router.patch('/user/:id', (req, res) => {
         res.json(result);
     })
 })
+
+router.post('/mesa/:id', (req, res) => {
+    let {id} = req.params;
+    adminServices.updateMesa(id, result => {
+        res.json(result);
+    });
+});
 
 /**
  * ---------------------------------------------------RUTAS PARA ADMINISTRAR PRODUCTOS-------------------------------------------
@@ -164,8 +177,11 @@ router.get('/reserva', (req, res) => {
     res.render('reservas');
 });
 
-router.get('/facturar', (req, res) => {
-    res.render('facturar');
+router.get('/facturar/:id', (req, res) => {
+    let {id} = req.params;
+    adminServices.getFactura(id,(result)=>{
+        res.json(result);        
+    })
 });
 
 module.exports = router;
