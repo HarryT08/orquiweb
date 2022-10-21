@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "http://localhost:3000";
 
 function loadData() {
   let date = formatDate(new Date(Date.now()));
@@ -68,7 +68,7 @@ function eliminarReserva(id) {
           text: 'La reserva ha sido eliminada.',
           icon: 'success'
         }).then(() => {
-          window.location.href = "./views/eliminarReserva";
+          window.location.href = "./views/eliminarReserva.html";
         });
       }).fail(function () {
         Swal.fire({

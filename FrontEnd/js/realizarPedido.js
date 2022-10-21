@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "http://localhost:3000";
 
 function loadData() {
     $.ajax({
@@ -26,7 +26,7 @@ function loadData() {
 
 function volver(){
     localStorage.clear();
-    window.location.href = './views/home_mesero'
+    window.location.href = './views/home_mesero.html'
 }
 
 function agregarCarrito(id) {
@@ -141,7 +141,7 @@ function getLocalStorage() {
 function finalizar(){
     let pedidos = getLocalStorage();
     if(pedidos.length > 0){
-        window.location.href = './views/finalizarPedido';
+        window.location.href = './views/finalizarPedido.html';
     }else{
         document.getElementById('alert-carrito').style.display = '';
     }

@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "http://localhost:3000";
 
 function loadData() {
     $.ajax({
@@ -39,7 +39,7 @@ function loadData() {
 
 function realizarFactura() {
     localStorage.setItem('idMesa', this.id);
-    window.location.href = './views/factura';
+    window.location.href = './views/factura.html';
 }
 
 document.addEventListener("DOMContentLoaded", loadData());

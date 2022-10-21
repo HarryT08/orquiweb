@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "http://localhost:3000";
 
 function loadData() {
   $.ajax({
@@ -141,7 +141,7 @@ function realizarReserva() {
         text: 'La reserva ha sido registrada exitosamente.',
         icon: 'success'
       }).then((willDelete) => {
-        window.location.href = "./views/reserva";
+        window.location.href = "./views/reserva.html";
       });
     })
   }

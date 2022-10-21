@@ -182,10 +182,15 @@ router.get('/reservaCount', (req, res) => {
  * ---------------------------------------------------OTRAS RUTAS-------------------------------------------
 **/
 
+//Ruta para facturar una mesa por el id de la mesa.
 router.get('/facturar/:id', (req, res) => {
     let {id} = req.params;
     adminServices.getFactura(id,(result)=>{
-        res.json(result);        
+        //Agarra el idComanda del primer detalleComanda que halla en el arreglo.
+        let idComanda = result[0].idComanda;
+        //Actualizamos el estado de la comanda, para evitar refacturación.
+        adminServices.updateComanda(idComanda, result => {});
+        res.json(result);
     })
 });
 

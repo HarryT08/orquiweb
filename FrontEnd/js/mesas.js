@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "http://localhost:3000";
 document.addEventListener("DOMContentLoaded", loadData());
 
 function loadData() {
@@ -61,7 +61,7 @@ function eliminar(id) {
                     text: 'La mesa ha sido eliminada.',
                     icon: 'success'
                 }).then((willDelete) => {
-                    window.location.href = "./views/mesas";
+                    window.location.href = "./views/mesas.html";
                 });
             }).fail(function () {
                 Swal.fire({
@@ -101,7 +101,7 @@ function enviarForm() {
                     text: 'La mesa ha sido registrada exitosamente.',
                     icon: 'success'
                 }).then((willDelete) => {
-                    window.location.href = "./views/mesas";
+                    window.location.href = "./views/mesas.html";
                 });
             } else {
                 let div = document.getElementById('alert');

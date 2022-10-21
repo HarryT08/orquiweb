@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "http://localhost:3000";
 
 $('#form-login').on('submit', function (e) {
     //Prevenimos envio de formulario
@@ -21,7 +21,7 @@ $('#form-login').on('submit', function (e) {
         }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (result) {
-                    window.location.href = `./views/home_${result.rol}`;
+                    window.location.href = `./views/home_${result.rol}.html`;
                     sessionStorage.setItem('user', result.username.toUpperCase());
                     sessionStorage.setItem('rol', result.rol.toUpperCase());
                     sessionStorage.setItem('nombre', result.nombre + " " + result.apellido);

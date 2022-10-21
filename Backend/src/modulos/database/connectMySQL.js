@@ -1,10 +1,10 @@
 const mysql = require('mysql');
 
 var conexion = mysql.createPool({
-    host: 'sql565.main-hosting.eu',
-    database: 'u173148296_bd_orquiweb',
-    user: 'u173148296_root',
-    password: 'Root1506',
+    host: '47.89.245.144',
+    database: 'orquiweb',
+    user: 'artdev',
+    password: 'desarrollo2022*',
     multipleStatements: true
 });
 

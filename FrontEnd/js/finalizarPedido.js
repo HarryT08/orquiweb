@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "http://localhost:3000";
 
 function loadData() {
     loadTable();
@@ -70,6 +70,6 @@ function formatDate(date) {
 
 function cleanAllBack(){
     localStorage.clear();
-    window.location.href = './views/home_mesero';
+    window.location.href = './views/home_mesero.html';
 }
 addEventListener('DOMContentLoaded', loadData);

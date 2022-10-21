@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "http://localhost:3000";
 document.addEventListener("DOMContentLoaded", loadData());
 
 function loadData() {
@@ -88,7 +88,7 @@ function enviarFormUpdate() {
                 text: 'El producto ha sido actualizado exitosamente.',
                 icon: 'success'
             }).then((willDelete) => {
-                window.location.href = "./views/productos";
+                window.location.href = "./views/productos.html";
             });
         })
     }
@@ -119,7 +119,7 @@ function eliminar(id) {
                     text: 'El producto ha sido eliminado.',
                     icon: 'success'
                 }).then(() => {
-                    window.location.href = "./views/productos";
+                    window.location.href = "./views/productos.html";
                 });
             }).fail(function () {
                 Swal.fire({
@@ -174,7 +174,7 @@ function enviarFormCrear() {
                     text: 'El producto ha sido registrado exitosamente.',
                     icon: 'success'
                 }).then((willDelete) => {
-                    window.location.href = "./views/productos";
+                    window.location.href = "./views/productos.html";
                 });
             } else {
                 let div = document.getElementById('alert');

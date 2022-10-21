@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "http://localhost:3000";
 document.addEventListener("DOMContentLoaded", loadData());
 const music = new Audio('./assets/voice/ding.mp3');
 let pedido = 0;
@@ -68,7 +68,7 @@ function denegarPedido(idComanda) {
         "Content-Type": "application/json",
       },
     });
-    window.location.href = "./views/home_pase";
+    window.location.href = "./views/home_pase.html";
   })
 }
 
@@ -129,5 +129,5 @@ function aceptarPedido(idComanda) {
         "Content-Type": "application/json",
       },
     })
-  }).then(() => window.location.href = "./views/home_pase");
+  }).then(() => window.location.href = "./views/home_pase.html");
 }

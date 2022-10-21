@@ -271,6 +271,30 @@ class AdminServices {
         })
     }
 
+    updateComanda(idComanda, callback) {
+        let query = `UPDATE comanda SET estado = 'Facturado' WHERE idComanda = ?`;
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(query, [idComanda], (err, result) => {
+                if (err) throw err;
+                callback(result);
+                connection.release();
+            })
+        })
+    }
+
+    updateDetalleComanda(idDetalle, idProducto, callback){
+        let query = `UPDATE detallecomanda SET estado = 'Facturado' WHERE idDetalleComanda = ? AND idProducto = ?`;
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(query, [idDetalle, idProducto], (err, result) => {
+                if (err) throw err;
+                callback(result);
+                connection.release();
+            })
+        })
+    }
+
     countReserva(fecha, callback){
         let query = `SELECT * FROM reserva WHERE fecha = ?`;
         bd.getConnection(function(err, connection){
