@@ -1,44 +1,51 @@
 const API_URL = "http://localhost:3000";
 
 function loadData() {
-    loadTable();
-    let mesa = localStorage.getItem('mesa');
-    let total = localStorage.getItem('total');
-    let mesero = sessionStorage.getItem('userId');
-    let fecha = formatDate(new Date(Date.now()));    
-    let data = {
-        idMesa: mesa,
-        totalComanda: total,
-        idUsuario: mesero,
-        fecha,
-        estado: 'Pendiente'
+  loadTable();
+  let mesa = localStorage.getItem('mesa');
+  let total = localStorage.getItem('total');
+  let mesero = sessionStorage.getItem('userId');
+  let fecha = formatDate(new Date(Date.now()));    
+  let data = {
+      idMesa: mesa,
+      totalComanda: total,
+      idUsuario: mesero,
+      fecha,
+      estado: 'Pendiente'
+  }
+  fetch(`${API_URL}/mesero/mesas/${mesa}`, {
+    method: 'PATCH',
+    body : JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
     }
-    fetch(`${API_URL}/mesero/comanda`, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }).then(function (response) {
-        response.json().then(function (result) {            
-            let pedidos = JSON.parse(localStorage.getItem('carrito'));            
-            pedidos.forEach(pedido =>{
-                let data = {
-                    idComanda: result.insertId,
-                    idProducto: pedido.idProducto,
-                    cantidad: pedido.cantidad,
-                    totalProducto: (pedido.cantidad * pedido.costoUnidad)
-                }                
-                fetch(`${API_URL}/mesero/detalleComanda`, {
-                    method: 'POST',
-                    body: JSON.stringify(data),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-            });
-        });
+  });
+  fetch(`${API_URL}/mesero/comanda`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+          'Content-Type': 'application/json'
+      }
+  }).then(function (response) {
+    response.json().then(function (result) {            
+      let pedidos = JSON.parse(localStorage.getItem('carrito'));            
+      pedidos.forEach(pedido =>{
+          let data = {
+              idComanda: result.insertId,
+              idProducto: pedido.idProducto,
+              cantidad: pedido.cantidad,
+              totalProducto: (pedido.cantidad * pedido.costoUnidad)
+          }                
+          fetch(`${API_URL}/mesero/detalleComanda`, {
+              method: 'POST',
+              body: JSON.stringify(data),
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
+      });
     });
+  });
 }
 
 function loadTable(){

@@ -35,7 +35,7 @@ router.get('/pedidosR/:id',(req, res) =>{
 
 router.patch('/mesas/:id' , (req, res) =>{
     let { id } = req.params
-    meseroServices.updateMesa(id, (result) => res.json(result))
+    meseroServices.updateMesaEstado(id, (result) => res.json(result))
 })
 
 module.exports = router;

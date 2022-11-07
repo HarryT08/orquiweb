@@ -54,7 +54,7 @@ class MeseroServices {
     }
 
     updateMesaEstado(id , callback){
-        let query = `UPDATE mesa m JOIN comanda c on c.idMesa = m.idMesa SET m.estado = "En Cola" WHERE c.idComanda = ?`
+        let query = `UPDATE mesa m SET m.estado = "En Cola" WHERE m.idMesa = ?`
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(query, [id], (err, result) => {
