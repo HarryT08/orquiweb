@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "https://orquiweb1.herokuapp.com";
 
 function imprimir() {
     //Obtenemos el div que vamos a imprimir

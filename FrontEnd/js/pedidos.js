@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb.herokuapp.com";
+const API_URL = "https://orquiweb1.herokuapp.com";
 document.addEventListener("DOMContentLoaded", loadData());
 const music = new Audio('./assets/voice/ding.mp3');
 let pedido = 0;
