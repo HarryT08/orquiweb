@@ -52,6 +52,18 @@ class MeseroServices {
             });
         })
     }
+
+    updateMesaEstado(id , callback){
+        let query = `UPDATE mesa m JOIN comanda c on c.idMesa = m.idMesa SET m.estado = "En Cola" WHERE c.idComanda = ?`
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(query, [id], (err, result) => {
+                if (err) throw err;
+                callback(result);
+                connection.release();
+            })
+        })
+    }
 }
 
 module.exports = MeseroServices;
