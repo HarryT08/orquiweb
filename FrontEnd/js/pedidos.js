@@ -67,15 +67,15 @@ function denegarPedido(idComanda) {
       headers: {
         "Content-Type": "application/json",
       },
-    });    
+    });
     await fetch(`${API_URL}/pase/pedidos/mesasDen/${idComanda}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-    })
-  })
+    });
     window.location.href = "./views/home_pase.html";
+  })
 }
 
 function modalVerification(idComanda) {
