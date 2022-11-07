@@ -40,6 +40,18 @@ class PaseServices {
         })
     }
 
+    updateMesaDen(id , callback){
+        let query = `UPDATE mesa m JOIN comanda c on c.idMesa = m.idMesa SET m.estado = "disponible" WHERE c.idComanda = ?`
+        bd.getConnection(function (err, connection) {
+            if (err) throw err;
+            connection.query(query, [id], (err, result) => {
+                if (err) throw err;
+                callback(result);
+                connection.release();
+            })
+        })
+    }
+
     updatePedido(id, callback){
         let query = `UPDATE comanda SET estado = 'Aceptado' WHERE idComanda = ?`
         bd.getConnection(function (err, connection) {

@@ -23,6 +23,12 @@ router.patch('/pedidos/mesas/:id' , (req, res) =>{
     paseServices.updateMesa(id, (result) => res.json(result))
 } )
 
+//Actualizar mesa por pedido denegado
+router.patch('/pedidos/mesasDen/:id' , (req, res) =>{
+    let { id } = req.params
+    paseServices.updateMesaDen(id, (result) => res.json(result))
+} )
+
 router.patch('/productos/denegar' , (req , res) => {
     paseServices.denegarProductos(req.body , pedido => res.json(pedido) )
 })
