@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "https://orquiweb.herokuapp.com";
 
 $('#form-login').on('submit', function (e) {
     //Prevenimos envio de formulario
