@@ -4,6 +4,7 @@ function loadData() {
     loadReservas();
     loadOrders();
     loadTable();
+    const estaDark = localStorage.getItem("black");
 }
 
 function loadReservas() {

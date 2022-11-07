@@ -1,5 +1,5 @@
 "use strict";
-
+let cnt = 0
 !function (NioApp, $) {
   "use strict";
 
@@ -544,20 +544,24 @@
 
   NioApp.ModeSwitch = function () {
     var toggle = $('.dark-switch');
-
-    if ($body.hasClass('dark-mode')) {
+    const flagMode = localStorage.getItem('black');
+    if(flagMode == 1){
       toggle.addClass('active');
-    } else {
+      $body.addClass('dark-mode');
+    }else{
       toggle.removeClass('active');
+      $body.removeClass('dark-mode');
     }
 
     toggle.on('click', function (e) {
       e.preventDefault();
       $(this).toggleClass('active');
       $body.toggleClass('dark-mode');
+      let flag = localStorage.getItem('black')
+      //Note : ^ = operador XOR, [ 1^1 = 0, 0^1 = 1] :D
+      localStorage.setItem('black' , flag ^= 1)
     });
-  }; // Knob @v1.0
-
+  };
 
   NioApp.Knob.init = function () {
     var knob = {
@@ -686,6 +690,10 @@
 
 
   NioApp.init = function () {
+    //console.log("al inicio" , localStorage.getItem('black'))
+    if(!localStorage.getItem('black')){
+      localStorage.setItem('black' , 0)
+    }
     NioApp.coms.docReady.push(NioApp.OtherInit);
     NioApp.coms.docReady.push(NioApp.Prettify);
     NioApp.coms.docReady.push(NioApp.ColorBG);
