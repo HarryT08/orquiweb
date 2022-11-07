@@ -690,7 +690,6 @@ let cnt = 0
 
 
   NioApp.init = function () {
-    //console.log("al inicio" , localStorage.getItem('black'))
     if(!localStorage.getItem('black')){
       localStorage.setItem('black' , 0)
     }
