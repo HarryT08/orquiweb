@@ -299,7 +299,7 @@ class AdminServices {
         let query = `SELECT * FROM reserva WHERE fecha = ?`;
         bd.getConnection(function(err, connection){
             if(err) throw err;
-            connection.query(query, [fecha], function(err,result){
+            connection.query(query, [fecha], function(err,result){  
                 if(err) throw err;
                 connection.release();
                 callback(result.length);
@@ -331,5 +331,4 @@ class AdminServices {
         })
     }
 }
-
 module.exports = AdminServices;
