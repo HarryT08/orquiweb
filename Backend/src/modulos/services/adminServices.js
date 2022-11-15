@@ -52,9 +52,11 @@ class AdminServices {
 
     updateUser(data, id, callback) {
         let update = 'UPDATE usuario SET ? WHERE idUsuario = ?';
-        bcrypt.hash(data.password, rondas, (err, encriptada) => {
-            data.password = encriptada;
-        });
+        if(data.password != undefined){
+            bcrypt.hash(data.password, rondas, (err, encriptada) => {
+                data.password = encriptada;
+            });
+        }
         bd.getConnection(function (err, connection) {
             if (err) throw err;
             connection.query(update, [data, id], function (err, result) {
