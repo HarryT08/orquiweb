@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb1.onrender.com/admin/producto";
+const API_URL = "https://orquiweb1.onrender.com";
 document.addEventListener("DOMContentLoaded", loadData());
 
 function loadData() {
