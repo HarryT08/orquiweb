@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb1.herokuapp.com";
+const API_URL = "https://orquiweb1.onrender.com/admin/producto";
 
 $('#form-login').on('submit', function (e) {
     //Prevenimos envio de formulario

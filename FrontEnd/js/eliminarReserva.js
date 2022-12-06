@@ -1,4 +1,4 @@
-const API_URL = "https://orquiweb1.herokuapp.com";
+const API_URL = "https://orquiweb1.onrender.com/admin/producto";
 
 function loadData() {
   let date = formatDate(new Date(Date.now()));
